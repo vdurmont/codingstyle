@@ -1,0 +1,45 @@
+@midnight: #2c3e50;
+@cloud: #ecf0f1;
+@default-color: #333;
+
+@import "mixins";
+@import "navbar";
+
+body {
+	padding-top: 70px;
+	background-color: #ffffff;
+	padding-bottom: 100px;
+}
+
+.user-option {
+	background-color: @cloud;
+	padding: 20px;
+	.rounded(10px);
+}
+
+.clickable { cursor: pointer; }
+
+.centered { text-align: center; }
+
+.option-title { font-size: 2em; }
+
+.next {
+	text-align: center;
+	a { width: 80%; }
+}
+
+.home-next { margin-top: 50px; }
+
+.options-row {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.third-party-logo {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.feedback {
+	font-size: 3em;
+}
