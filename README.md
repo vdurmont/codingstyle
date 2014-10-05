@@ -34,4 +34,4 @@ So I want to test this idea. I'm seeking some feedback on several things:
 * What do you think about [this website](http://codestyle.vdurmont.com)?
 * Do you have any suggestion? (like another way to solve the problem :D)
 
-**Please send your feedback [IN THE ISSUES](https://github.com/vdurmont/codestyle/issues) or [BY EMAIL](mailto:vdurmont@gmail.com?subject=Feedback%20on%20Codestyle).**
+**Please send your feedback [IN THIS GOOGLE FORM](http://goo.gl/forms/eFSNNOHocA) or [BY EMAIL](mailto:vdurmont@gmail.com?subject=Feedback%20on%20Codestyle).**
