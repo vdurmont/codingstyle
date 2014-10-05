@@ -20,18 +20,18 @@ To try to merge everything, the solution I suggest is a generator that would be 
 
 * Take any of your configuration files in input
 * Generate the others files so that you can distribute them in your projects and in your team
-* If you're not sure about what you want, a simple form will help your generate everything
+* If you're not sure about what you want, a simple form will help you generate everything
 
 Until now, I only talked about IntelliJ, Eclipse and maven-checkstyle-plugin because they are some of the most widely used tools in the Java world but we could easily generate configuration files for .editorconfig, emacs, vim, etc.
 
 ## So?
 
-So I want to test this idea. I need feedback on several things:
+So I want to test this idea. I'm seeking some feedback on several things:
 
 * How do you handle this problem in your developer's life?
 * What is your global impression on this idea?
 * Would you use a tool like this one?
-* What do you think about [this website](http://vdurmont.com/codestyle-poc)?
+* What do you think about [this website](http://codestyle.vdurmont.com)?
 * Do you have any suggestion? (like another way to solve the problem :D)
 
 **Please send your feedback [IN THE ISSUES](https://github.com/vdurmont/codestyle/issues) or [BY EMAIL](mailto:vdurmont@gmail.com?subject=Feedback%20on%20Codestyle).**
