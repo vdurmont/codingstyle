@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public class Page {
     private Integer maximumLineLength;
@@ -27,5 +27,13 @@ public class Page {
 
     public void setKeepLineBreaks(Boolean keepLineBreaks) {
         this.keepLineBreaks = keepLineBreaks;
+    }
+
+    @Override public String toString() {
+        return "Page{" +
+                "maximumLineLength=" + maximumLineLength +
+                ", wrapIfExceeded=" + wrapIfExceeded +
+                ", keepLineBreaks=" + keepLineBreaks +
+                '}';
     }
 }

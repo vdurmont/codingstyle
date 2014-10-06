@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public class Indentation {
     private IndentCharacter indentCharacter;
@@ -36,5 +36,14 @@ public class Indentation {
 
     public void setReindentComments(Boolean reindentComments) {
         this.reindentComments = reindentComments;
+    }
+
+    @Override public String toString() {
+        return "Indentation{" +
+                "indentCharacter=" + indentCharacter +
+                ", indentSize=" + indentSize +
+                ", smartTabs=" + smartTabs +
+                ", reindentComments=" + reindentComments +
+                '}';
     }
 }

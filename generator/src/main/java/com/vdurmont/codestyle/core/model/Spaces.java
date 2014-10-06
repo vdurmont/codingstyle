@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public class Spaces {
     private Boolean beforeMethodParentheses;
@@ -126,5 +126,24 @@ public class Spaces {
 
     public void setAfterCast(Boolean afterCast) {
         this.afterCast = afterCast;
+    }
+
+    @Override public String toString() {
+        return "Spaces{" +
+                "beforeMethodParentheses=" + beforeMethodParentheses +
+                ", beforeControlStatementParentheses=" + beforeControlStatementParentheses +
+                ", aroundAssignmentOperators=" + aroundAssignmentOperators +
+                ", aroundLogicalAndComparisonOperators=" + aroundLogicalAndComparisonOperators +
+                ", aroundBitwiseOperators=" + aroundBitwiseOperators +
+                ", aroundMathOperators=" + aroundMathOperators +
+                ", aroundUnaryOperators=" + aroundUnaryOperators +
+                ", aroundTernaryOperators=" + aroundTernaryOperators +
+                ", aroundLambdaArrow=" + aroundLambdaArrow +
+                ", beforeLeftBrace=" + beforeLeftBrace +
+                ", beforeKeywords=" + beforeKeywords +
+                ", withinGroups=" + withinGroups +
+                ", afterCommaAndSemicolon=" + afterCommaAndSemicolon +
+                ", afterCast=" + afterCast +
+                '}';
     }
 }

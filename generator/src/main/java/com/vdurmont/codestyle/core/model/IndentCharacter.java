@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public enum IndentCharacter {
     TAB, SPACE

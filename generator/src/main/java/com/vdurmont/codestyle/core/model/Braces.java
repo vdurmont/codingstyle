@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public class Braces {
     private BracesPlacement classAndMethodsBraces;
@@ -117,5 +117,23 @@ public class Braces {
 
     public void setEnumConstantsWrapping(Wrapping enumConstantsWrapping) {
         this.enumConstantsWrapping = enumConstantsWrapping;
+    }
+
+    @Override public String toString() {
+        return "Braces{" +
+                "classAndMethodsBraces=" + classAndMethodsBraces +
+                ", otherBraces=" + otherBraces +
+                ", extendsAndImplementsAndThrowsWrapping=" + extendsAndImplementsAndThrowsWrapping +
+                ", methodsDeclarationParametersWrapping=" + methodsDeclarationParametersWrapping +
+                ", methodsCallArgumentsWrapping=" + methodsCallArgumentsWrapping +
+                ", chainedMethodCallsWrapping=" + chainedMethodCallsWrapping +
+                ", forceControlStatementsBraces=" + forceControlStatementsBraces +
+                ", forceControlStatementsNewLine=" + forceControlStatementsNewLine +
+                ", binaryExpressionsWrapping=" + binaryExpressionsWrapping +
+                ", ternaryExpressionsWrapping=" + ternaryExpressionsWrapping +
+                ", assignementsWrapping=" + assignementsWrapping +
+                ", annotationsWrapping=" + annotationsWrapping +
+                ", enumConstantsWrapping=" + enumConstantsWrapping +
+                '}';
     }
 }

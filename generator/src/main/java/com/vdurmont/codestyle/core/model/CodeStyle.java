@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.model;
+package com.vdurmont.codestyle.core.model;
 
 public class CodeStyle {
     private String projectName;
@@ -47,5 +47,15 @@ public class CodeStyle {
 
     public void setBraces(Braces braces) {
         this.braces = braces;
+    }
+
+    @Override public String toString() {
+        return "CodeStyle{" +
+                "projectName='" + projectName + '\'' +
+                ", indentation=" + indentation +
+                ", page=" + page +
+                ", spaces=" + spaces +
+                ", braces=" + braces +
+                '}';
     }
 }
