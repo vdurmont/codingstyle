@@ -3,11 +3,25 @@ package com.vdurmont.codestyle.checkstyle.processor;
 import com.vdurmont.codestyle.checkstyle.model.CheckModule;
 import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
 import com.vdurmont.codestyle.checkstyle.util.CheckModuleBuilder;
+import com.vdurmont.codestyle.core.model.IndentCharacter;
 import com.vdurmont.codestyle.core.model.Indentation;
 
 public class CheckstyleIndentationConverter {
     public static void buildCheckstyle(Checkstyle checkstyle, Indentation indentation) {
-        switch (indentation.getIndentCharacter()) {
+        checkIndentCharacter(checkstyle, indentation.getIndentCharacter());
+        checkIndentSize(checkstyle, indentation.getIndentSize(), indentation.getLabelIndentSize());
+    }
+
+    private static void checkIndentSize(Checkstyle checkstyle, Integer indentSize, Integer labelIndentSize) {
+        CheckModule module = CheckModuleBuilder.withName("Indentation")
+                .withProperty("basicOffset", indentSize)
+                .withProperty("caseIndent", labelIndentSize)
+                .build();
+        checkstyle.addModule(module);
+    }
+
+    private static void checkIndentCharacter(Checkstyle checkstyle, IndentCharacter character) {
+        switch (character) {
             case TAB:
                 addTabModule(checkstyle);
                 break;

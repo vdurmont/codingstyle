@@ -10,8 +10,8 @@ public class CheckModuleBuilder {
         this.module = new CheckModule(name);
     }
 
-    public CheckModuleBuilder withProperty(String name, String value) {
-        CheckProperty property = new CheckProperty(name, value);
+    public CheckModuleBuilder withProperty(String name, Object value) {
+        CheckProperty property = new CheckProperty(name, value.toString());
         this.module.getProperties().add(property);
         return this;
     }
