@@ -1,5 +1,9 @@
 package com.vdurmont.codestyle.core.model;
 
+/**
+ * This is the main object representing a code style.
+ * Each config is gonna be converted to this one before being converted to another config.
+ */
 public class CodeStyle {
     private String projectName;
     private Indentation indentation;

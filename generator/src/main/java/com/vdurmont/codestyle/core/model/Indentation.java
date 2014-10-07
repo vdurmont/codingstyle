@@ -3,8 +3,13 @@ package com.vdurmont.codestyle.core.model;
 public class Indentation {
     private IndentCharacter indentCharacter;
     private Integer indentSize;
+    private Integer continuationIndentSize;
+    private Integer tabSize;
+    private Integer labelIndentSize;
+    private Boolean labelIndentAbsolute;
     private Boolean smartTabs;
     private Boolean reindentComments;
+    private Boolean relativeIndents;
 
     public IndentCharacter getIndentCharacter() {
         return indentCharacter;
@@ -20,6 +25,38 @@ public class Indentation {
 
     public void setIndentSize(Integer indentSize) {
         this.indentSize = indentSize;
+    }
+
+    public Integer getContinuationIndentSize() {
+        return continuationIndentSize;
+    }
+
+    public void setContinuationIndentSize(Integer continuationIndentSize) {
+        this.continuationIndentSize = continuationIndentSize;
+    }
+
+    public Integer getTabSize() {
+        return tabSize;
+    }
+
+    public void setTabSize(Integer tabSize) {
+        this.tabSize = tabSize;
+    }
+
+    public Integer getLabelIndentSize() {
+        return labelIndentSize;
+    }
+
+    public void setLabelIndentSize(Integer labelIndentSize) {
+        this.labelIndentSize = labelIndentSize;
+    }
+
+    public Boolean getLabelIndentAbsolute() {
+        return labelIndentAbsolute;
+    }
+
+    public void setLabelIndentAbsolute(Boolean labelIndentAbsolute) {
+        this.labelIndentAbsolute = labelIndentAbsolute;
     }
 
     public Boolean getSmartTabs() {
@@ -38,12 +75,11 @@ public class Indentation {
         this.reindentComments = reindentComments;
     }
 
-    @Override public String toString() {
-        return "Indentation{" +
-                "indentCharacter=" + indentCharacter +
-                ", indentSize=" + indentSize +
-                ", smartTabs=" + smartTabs +
-                ", reindentComments=" + reindentComments +
-                '}';
+    public Boolean getRelativeIndents() {
+        return relativeIndents;
+    }
+
+    public void setRelativeIndents(Boolean relativeIndents) {
+        this.relativeIndents = relativeIndents;
     }
 }

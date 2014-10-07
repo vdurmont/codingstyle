@@ -14,7 +14,7 @@ public class IntelliJConverter implements Converter<CodeScheme> {
         LOGGER.trace("Converting " + scheme + " to CodeStyle");
         CodeStyle style = new CodeStyle();
         style.setProjectName(scheme.getName());
-        Indentation indentation = IntelliJIndentationConverter.convert(scheme);
+        Indentation indentation = IntelliJIndentationConverter.toIndentation(scheme);
         style.setIndentation(indentation);
         return style;
     }

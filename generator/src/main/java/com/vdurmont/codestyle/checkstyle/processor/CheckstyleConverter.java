@@ -14,6 +14,9 @@ public class CheckstyleConverter implements Converter<Checkstyle> {
         // TODO code
         Checkstyle checkstyle = new Checkstyle();
         checkstyle.setName("Test");
+
+        CheckstyleIndentationConverter.buildCheckstyle(checkstyle, codeStyle.getIndentation());
+
         return checkstyle;
     }
 }
