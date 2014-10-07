@@ -10,8 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(JUnit4.class)
 public class CheckstyleIndentationConverterTest {
@@ -32,8 +33,8 @@ public class CheckstyleIndentationConverterTest {
         CheckstyleIndentationConverter.buildCheckstyle(this.checkstyle, indentation);
 
         // THEN
-        CheckModule module = this.checkstyle.getModule("FileTabCharacter");
-        assertNotNull(module);
+        List<CheckModule> modules = this.checkstyle.getModules("FileTabCharacter");
+        assertEquals(1, modules.size());
     }
 
     @Test
@@ -46,9 +47,9 @@ public class CheckstyleIndentationConverterTest {
         CheckstyleIndentationConverter.buildCheckstyle(this.checkstyle, indentation);
 
         // THEN
-        CheckModule module = this.checkstyle.getModule("RegexpSinglelineJava");
-        assertNotNull(module);
-        CheckProperty format = module.getProperty("format");
+        List<CheckModule> modules = this.checkstyle.getModules("RegexpSinglelineJava");
+        assertEquals(1, modules.size());
+        CheckProperty format = modules.get(0).getProperty("format");
         assertEquals("^\\t* +\\t*\\S", format.getValue());
     }
 }

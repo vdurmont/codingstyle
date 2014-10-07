@@ -25,11 +25,10 @@ public class Checkstyle {
         this.name = name;
     }
 
-    public CheckModule getModule(String name) {
-        List<CheckModule> modules = this.modules.stream()
+    public List<CheckModule> getModules(String name) {
+        return this.modules.stream()
                 .filter(m -> m.getName().equals(name))
                 .collect(Collectors.toList());
-        return modules.size() == 0 ? null : modules.get(0);
     }
 
     public List<CheckModule> getModules() {
