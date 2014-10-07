@@ -7,6 +7,7 @@ import com.vdurmont.codestyle.core.processor.Writer;
 import com.vdurmont.codestyle.intellij.model.CodeScheme;
 import com.vdurmont.codestyle.intellij.processor.IntelliJConfigProcessor;
 import com.vdurmont.codestyle.intellij.processor.IntelliJReader;
+import com.vdurmont.codestyle.intellij.processor.IntelliJWriter;
 
 public class IntelliJModule implements Module<CodeScheme> {
     private final IntelliJConfigProcessor processor;

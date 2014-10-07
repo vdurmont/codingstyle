@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.checkstyle;
+package com.vdurmont.codestyle.checkstyle.processor;
 
 import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
 import com.vdurmont.codestyle.core.model.CodeStyle;

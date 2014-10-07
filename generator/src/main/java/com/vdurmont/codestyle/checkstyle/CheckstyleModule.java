@@ -2,6 +2,7 @@ package com.vdurmont.codestyle.checkstyle;
 
 import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
 import com.vdurmont.codestyle.checkstyle.processor.CheckstyleConfigProcessor;
+import com.vdurmont.codestyle.checkstyle.processor.CheckstyleReader;
 import com.vdurmont.codestyle.checkstyle.processor.CheckstyleWriter;
 import com.vdurmont.codestyle.core.Module;
 import com.vdurmont.codestyle.core.processor.ConfigProcessor;

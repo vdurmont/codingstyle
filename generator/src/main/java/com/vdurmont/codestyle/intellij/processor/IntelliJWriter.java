@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.intellij;
+package com.vdurmont.codestyle.intellij.processor;
 
 import com.vdurmont.codestyle.core.model.CodeStyle;
 import com.vdurmont.codestyle.core.processor.Writer;
