@@ -46,8 +46,8 @@ public class StyleManager {
         Module<T> inputModule = this.getModule(inputClass);
         Module<K> outputModule = this.getModule(outputClass);
         T input = inputModule.getConfigProcessor().readFromStream(inputStream);
-        CodeStyle style = inputModule.getConverter().toCodeStyle(input);
-        K output = outputModule.getConverter().fromCodeStyle(style);
+        CodeStyle style = inputModule.getReader().read(input);
+        K output = outputModule.getWriter().write(style);
         outputModule.getConfigProcessor().writeToStream(output, outputStream);
     }
 
