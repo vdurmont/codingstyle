@@ -30,7 +30,7 @@ public class CheckstyleIndentationWriterTest {
         indentation.setIndentCharacter(IndentCharacter.SPACE);
 
         // WHEN
-        CheckstyleIndentationConverter.buildCheckstyle(this.checkstyle, indentation);
+        CheckstyleIndentationWriter.buildCheckstyle(this.checkstyle, indentation);
 
         // THEN
         List<CheckModule> modules = this.checkstyle.getModules("FileTabCharacter");
@@ -44,7 +44,7 @@ public class CheckstyleIndentationWriterTest {
         indentation.setIndentCharacter(IndentCharacter.TAB);
 
         // WHEN
-        CheckstyleIndentationConverter.buildCheckstyle(this.checkstyle, indentation);
+        CheckstyleIndentationWriter.buildCheckstyle(this.checkstyle, indentation);
 
         // THEN
         List<CheckModule> modules = this.checkstyle.getModules("RegexpSinglelineJava");

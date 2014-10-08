@@ -11,7 +11,8 @@ public class CheckModuleBuilder {
     }
 
     public CheckModuleBuilder withProperty(String name, Object value) {
-        CheckProperty property = new CheckProperty(name, value.toString());
+        String strValue = value == null ? null : value.toString();
+        CheckProperty property = new CheckProperty(name, strValue);
         this.module.getProperties().add(property);
         return this;
     }

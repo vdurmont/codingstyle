@@ -7,6 +7,7 @@ package com.vdurmont.codestyle.core.model;
 public class CodeStyle {
     private String projectName;
     private Indentation indentation;
+    private Annotations annotations;
     private Page page;
     private Spaces spaces;
     private Braces braces;
@@ -27,6 +28,14 @@ public class CodeStyle {
 
     public void setIndentation(Indentation indentation) {
         this.indentation = indentation;
+    }
+
+    public Annotations getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(Annotations annotations) {
+        this.annotations = annotations;
     }
 
     public Page getPage() {
