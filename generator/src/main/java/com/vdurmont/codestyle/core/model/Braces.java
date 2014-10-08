@@ -8,7 +8,10 @@ public class Braces {
     private Wrapping methodsDeclarationParametersWrapping;
     private Wrapping methodsCallArgumentsWrapping;
     private Wrapping chainedMethodCallsWrapping;
-    private Boolean forceControlStatementsBraces;
+    private Boolean forceBracesOnIf;
+    private Boolean forceBracesOnFor;
+    private Boolean forceBracesOnWhile;
+    private Boolean forceBracesOnDoWhile;
     private Boolean forceControlStatementsNewLine;
     private Wrapping binaryExpressionsWrapping;
     private Wrapping ternaryExpressionsWrapping;
@@ -72,12 +75,36 @@ public class Braces {
         this.chainedMethodCallsWrapping = chainedMethodCallsWrapping;
     }
 
-    public Boolean getForceControlStatementsBraces() {
-        return forceControlStatementsBraces;
+    public Boolean getForceBracesOnIf() {
+        return forceBracesOnIf;
     }
 
-    public void setForceControlStatementsBraces(Boolean forceControlStatementsBraces) {
-        this.forceControlStatementsBraces = forceControlStatementsBraces;
+    public void setForceBracesOnIf(Boolean forceBracesOnIf) {
+        this.forceBracesOnIf = forceBracesOnIf;
+    }
+
+    public Boolean getForceBracesOnFor() {
+        return forceBracesOnFor;
+    }
+
+    public void setForceBracesOnFor(Boolean forceBracesOnFor) {
+        this.forceBracesOnFor = forceBracesOnFor;
+    }
+
+    public Boolean getForceBracesOnWhile() {
+        return forceBracesOnWhile;
+    }
+
+    public void setForceBracesOnWhile(Boolean forceBracesOnWhile) {
+        this.forceBracesOnWhile = forceBracesOnWhile;
+    }
+
+    public Boolean getForceBracesOnDoWhile() {
+        return forceBracesOnDoWhile;
+    }
+
+    public void setForceBracesOnDoWhile(Boolean forceBracesOnDoWhile) {
+        this.forceBracesOnDoWhile = forceBracesOnDoWhile;
     }
 
     public Boolean getForceControlStatementsNewLine() {

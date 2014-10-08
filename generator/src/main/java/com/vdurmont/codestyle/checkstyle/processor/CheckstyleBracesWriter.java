@@ -7,8 +7,18 @@ import com.vdurmont.codestyle.core.exception.CodeStyleException;
 import com.vdurmont.codestyle.core.model.Braces;
 import com.vdurmont.codestyle.core.model.BracesPlacement;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.vdurmont.codestyle.core.util.ValueReader.isTrue;
+
 public class CheckstyleBracesWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Braces braces) {
+        addLeftCurlyStyle(checkstyle, braces);
+        forceBraces(checkstyle, braces);
+    }
+
+    private static void addLeftCurlyStyle(Checkstyle checkstyle, Braces braces) {
         if (braces.getClassBraces() != null) {
             addLeftCurlyModule(checkstyle, braces.getClassBraces(),
                     "ANNOTATION_DEF", "CLASS_DEF", "ENUM_DEF", "INTERFACE_DEF");
@@ -40,5 +50,29 @@ public class CheckstyleBracesWriter {
                 return "nl";
         }
         throw new CodeStyleException("Unknown BracesPlament: " + placement);
+    }
+
+    private static void forceBraces(Checkstyle checkstyle, Braces braces) {
+        List<String> tokens = new ArrayList<>();
+        if (isTrue(braces.getForceBracesOnIf())) {
+            tokens.add("LITERAL_IF");
+            tokens.add("LITERAL_ELSE");
+        }
+        if (isTrue(braces.getForceBracesOnDoWhile())) {
+            tokens.add("LITERAL_DO");
+        }
+        if (isTrue(braces.getForceBracesOnWhile())) {
+            tokens.add("LITERAL_WHILE");
+        }
+        if (isTrue(braces.getForceBracesOnFor())) {
+            tokens.add("LITERAL_FOR");
+        }
+
+        if (tokens.size() > 0) {
+            CheckModule module = CheckModuleBuilder.withName("NeedBraces")
+                    .withProperty("tokens", String.join(",", tokens))
+                    .build();
+            checkstyle.addModule(module);
+        }
     }
 }

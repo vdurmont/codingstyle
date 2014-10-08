@@ -35,4 +35,18 @@ public class CheckstyleBracesWriterTest {
         List<CheckModule> modules = this.checkstyle.getModules("LeftCurly");
         assertEquals(1, modules.size());
     }
+
+    @Test
+    public void buildCheckstyle_with_forceBracesOnFor_adds_a_needBraces_module() {
+        // GIVEN
+        Braces braces = new Braces();
+        braces.setForceBracesOnFor(true);
+
+        // WHEN
+        CheckstyleBracesWriter.buildCheckstyle(this.checkstyle, braces);
+
+        // THEN
+        List<CheckModule> modules = this.checkstyle.getModules("NeedBraces");
+        assertEquals(1, modules.size());
+    }
 }
