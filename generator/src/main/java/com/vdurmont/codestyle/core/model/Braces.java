@@ -1,7 +1,8 @@
 package com.vdurmont.codestyle.core.model;
 
 public class Braces {
-    private BracesPlacement classAndMethodsBraces;
+    private BracesPlacement classBraces;
+    private BracesPlacement methodBraces;
     private BracesPlacement otherBraces;
     private Wrapping extendsAndImplementsAndThrowsWrapping;
     private Wrapping methodsDeclarationParametersWrapping;
@@ -15,12 +16,20 @@ public class Braces {
     private Wrapping annotationsWrapping;
     private Wrapping enumConstantsWrapping;
 
-    public BracesPlacement getClassAndMethodsBraces() {
-        return classAndMethodsBraces;
+    public BracesPlacement getClassBraces() {
+        return classBraces;
     }
 
-    public void setClassAndMethodsBraces(BracesPlacement classAndMethodsBraces) {
-        this.classAndMethodsBraces = classAndMethodsBraces;
+    public void setClassBraces(BracesPlacement classBraces) {
+        this.classBraces = classBraces;
+    }
+
+    public BracesPlacement getMethodBraces() {
+        return methodBraces;
+    }
+
+    public void setMethodBraces(BracesPlacement methodBraces) {
+        this.methodBraces = methodBraces;
     }
 
     public BracesPlacement getOtherBraces() {
@@ -117,23 +126,5 @@ public class Braces {
 
     public void setEnumConstantsWrapping(Wrapping enumConstantsWrapping) {
         this.enumConstantsWrapping = enumConstantsWrapping;
-    }
-
-    @Override public String toString() {
-        return "Braces{" +
-                "classAndMethodsBraces=" + classAndMethodsBraces +
-                ", otherBraces=" + otherBraces +
-                ", extendsAndImplementsAndThrowsWrapping=" + extendsAndImplementsAndThrowsWrapping +
-                ", methodsDeclarationParametersWrapping=" + methodsDeclarationParametersWrapping +
-                ", methodsCallArgumentsWrapping=" + methodsCallArgumentsWrapping +
-                ", chainedMethodCallsWrapping=" + chainedMethodCallsWrapping +
-                ", forceControlStatementsBraces=" + forceControlStatementsBraces +
-                ", forceControlStatementsNewLine=" + forceControlStatementsNewLine +
-                ", binaryExpressionsWrapping=" + binaryExpressionsWrapping +
-                ", ternaryExpressionsWrapping=" + ternaryExpressionsWrapping +
-                ", assignementsWrapping=" + assignementsWrapping +
-                ", annotationsWrapping=" + annotationsWrapping +
-                ", enumConstantsWrapping=" + enumConstantsWrapping +
-                '}';
     }
 }
