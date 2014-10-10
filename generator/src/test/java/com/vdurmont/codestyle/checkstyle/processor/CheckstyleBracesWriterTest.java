@@ -49,4 +49,18 @@ public class CheckstyleBracesWriterTest {
         List<CheckModule> modules = this.checkstyle.getModules("NeedBraces");
         assertEquals(1, modules.size());
     }
+
+    @Test
+    public void buildCheckstyle_with_statementAfterClosingTry_adds_a_RightCurly_module() {
+        // GIVEN
+        Braces braces = new Braces();
+        braces.setStatementAfterClosingTry(BracesPlacement.END_OF_LINE);
+
+        // WHEN
+        CheckstyleBracesWriter.buildCheckstyle(this.checkstyle, braces);
+
+        // THEN
+        List<CheckModule> modules = this.checkstyle.getModules("RightCurly");
+        assertEquals(1, modules.size());
+    }
 }

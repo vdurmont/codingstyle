@@ -15,6 +15,7 @@ import static com.vdurmont.codestyle.core.util.ValueReader.isTrue;
 public class CheckstyleBracesWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Braces braces) {
         addLeftCurlyStyle(checkstyle, braces);
+        addRightCurlyNextStatement(checkstyle, braces);
         forceBraces(checkstyle, braces);
     }
 
@@ -34,7 +35,7 @@ public class CheckstyleBracesWriter {
     }
 
     private static void addLeftCurlyModule(Checkstyle checkstyle, BracesPlacement placement, String... tokens) {
-        String option = getCurlyOption(placement);
+        String option = getLeftCurlyOption(placement);
         CheckModule module = CheckModuleBuilder.withName("LeftCurly")
                 .withProperty("option", option)
                 .withProperty("tokens", String.join(",", tokens))
@@ -42,12 +43,52 @@ public class CheckstyleBracesWriter {
         checkstyle.addModule(module);
     }
 
-    private static String getCurlyOption(BracesPlacement placement) {
+    private static String getLeftCurlyOption(BracesPlacement placement) {
         switch (placement) {
             case END_OF_LINE:
                 return "eol";
             case NEW_LINE:
                 return "nl";
+        }
+        throw new CodeStyleException("Unknown BracesPlament: " + placement);
+    }
+
+    private static void addRightCurlyNextStatement(Checkstyle checkstyle, Braces braces) {
+        if (braces.getStatementAfterClosingTry() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingTry(), "LITERAL_TRY");
+        }
+        if (braces.getStatementAfterClosingCatch() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingCatch(), "LITERAL_CATCH");
+        }
+        if (braces.getStatementAfterClosingFinally() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingFinally(), "LITERAL_FINALLY");
+        }
+        if (braces.getStatementAfterClosingIf() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingIf(), "LITERAL_IF");
+        }
+        if (braces.getStatementAfterClosingElse() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingElse(), "LITERAL_ELSE");
+        }
+        if (braces.getStatementAfterClosingDo() != null) {
+            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingDo(), "LITERAL_DO");
+        }
+    }
+
+    private static void addRightCurlyModule(Checkstyle checkstyle, BracesPlacement placement, String... tokens) {
+        String option = getRightCurlyOption(placement);
+        CheckModule module = CheckModuleBuilder.withName("RightCurly")
+                .withProperty("option", option)
+                .withProperty("tokens", String.join(",", tokens))
+                .build();
+        checkstyle.addModule(module);
+    }
+
+    private static String getRightCurlyOption(BracesPlacement placement) {
+        switch (placement) {
+            case END_OF_LINE:
+                return "same";
+            case NEW_LINE:
+                return "alone";
         }
         throw new CodeStyleException("Unknown BracesPlament: " + placement);
     }

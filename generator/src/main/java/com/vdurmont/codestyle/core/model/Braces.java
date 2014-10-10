@@ -12,7 +12,12 @@ public class Braces {
     private Boolean forceBracesOnFor;
     private Boolean forceBracesOnWhile;
     private Boolean forceBracesOnDoWhile;
-    private Boolean forceControlStatementsNewLine;
+    private BracesPlacement statementAfterClosingIf;
+    private BracesPlacement statementAfterClosingElse;
+    private BracesPlacement statementAfterClosingTry;
+    private BracesPlacement statementAfterClosingCatch;
+    private BracesPlacement statementAfterClosingFinally;
+    private BracesPlacement statementAfterClosingDo;
     private Wrapping binaryExpressionsWrapping;
     private Wrapping ternaryExpressionsWrapping;
     private Wrapping assignementsWrapping;
@@ -107,12 +112,52 @@ public class Braces {
         this.forceBracesOnDoWhile = forceBracesOnDoWhile;
     }
 
-    public Boolean getForceControlStatementsNewLine() {
-        return forceControlStatementsNewLine;
+    public BracesPlacement getStatementAfterClosingIf() {
+        return statementAfterClosingIf;
     }
 
-    public void setForceControlStatementsNewLine(Boolean forceControlStatementsNewLine) {
-        this.forceControlStatementsNewLine = forceControlStatementsNewLine;
+    public void setStatementAfterClosingIf(BracesPlacement statementAfterClosingIf) {
+        this.statementAfterClosingIf = statementAfterClosingIf;
+    }
+
+    public BracesPlacement getStatementAfterClosingElse() {
+        return statementAfterClosingElse;
+    }
+
+    public void setStatementAfterClosingElse(BracesPlacement statementAfterClosingElse) {
+        this.statementAfterClosingElse = statementAfterClosingElse;
+    }
+
+    public BracesPlacement getStatementAfterClosingTry() {
+        return statementAfterClosingTry;
+    }
+
+    public void setStatementAfterClosingTry(BracesPlacement statementAfterClosingTry) {
+        this.statementAfterClosingTry = statementAfterClosingTry;
+    }
+
+    public BracesPlacement getStatementAfterClosingCatch() {
+        return statementAfterClosingCatch;
+    }
+
+    public void setStatementAfterClosingCatch(BracesPlacement statementAfterClosingCatch) {
+        this.statementAfterClosingCatch = statementAfterClosingCatch;
+    }
+
+    public BracesPlacement getStatementAfterClosingFinally() {
+        return statementAfterClosingFinally;
+    }
+
+    public void setStatementAfterClosingFinally(BracesPlacement statementAfterClosingFinally) {
+        this.statementAfterClosingFinally = statementAfterClosingFinally;
+    }
+
+    public BracesPlacement getStatementAfterClosingDo() {
+        return statementAfterClosingDo;
+    }
+
+    public void setStatementAfterClosingDo(BracesPlacement statementAfterClosingDo) {
+        this.statementAfterClosingDo = statementAfterClosingDo;
     }
 
     public Wrapping getBinaryExpressionsWrapping() {
