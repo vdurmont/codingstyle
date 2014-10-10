@@ -23,10 +23,10 @@ public class CheckstyleBracesWriterTest {
     }
 
     @Test
-    public void buildCheckstyle_with_classBraces_adds_a_leftCurly_module() {
+    public void buildCheckstyle_with_LeftBracesBlock_CLASS_adds_a_leftCurly_module() {
         // GIVEN
         Braces braces = new Braces();
-        braces.setClassBraces(BracesPlacement.END_OF_LINE);
+        braces.addLeftBracesPlacement(Braces.LeftBracesBlock.CLASS, BracesPlacement.END_OF_LINE);
 
         // WHEN
         CheckstyleBracesWriter.buildCheckstyle(this.checkstyle, braces);
@@ -37,10 +37,10 @@ public class CheckstyleBracesWriterTest {
     }
 
     @Test
-    public void buildCheckstyle_with_forceBracesOnFor_adds_a_needBraces_module() {
+    public void buildCheckstyle_with_ForcedBracesBlock_FOR_adds_a_needBraces_module() {
         // GIVEN
         Braces braces = new Braces();
-        braces.setForceBracesOnFor(true);
+        braces.addForcedBraces(Braces.ForcedBracesBlock.FOR, true);
 
         // WHEN
         CheckstyleBracesWriter.buildCheckstyle(this.checkstyle, braces);
@@ -51,10 +51,10 @@ public class CheckstyleBracesWriterTest {
     }
 
     @Test
-    public void buildCheckstyle_with_statementAfterClosingTry_adds_a_RightCurly_module() {
+    public void buildCheckstyle_with_RightBracesBlock_TRY_adds_a_RightCurly_module() {
         // GIVEN
         Braces braces = new Braces();
-        braces.setStatementAfterClosingTry(BracesPlacement.END_OF_LINE);
+        braces.addRightBracesPlacement(Braces.RightBracesBlock.TRY, BracesPlacement.END_OF_LINE);
 
         // WHEN
         CheckstyleBracesWriter.buildCheckstyle(this.checkstyle, braces);

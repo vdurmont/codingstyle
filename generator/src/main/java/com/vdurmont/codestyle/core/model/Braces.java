@@ -1,202 +1,52 @@
 package com.vdurmont.codestyle.core.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Braces {
-    private BracesPlacement classBraces;
-    private BracesPlacement methodBraces;
-    private BracesPlacement otherBraces;
-    private Wrapping extendsAndImplementsAndThrowsWrapping;
-    private Wrapping methodsDeclarationParametersWrapping;
-    private Wrapping methodsCallArgumentsWrapping;
-    private Wrapping chainedMethodCallsWrapping;
-    private Boolean forceBracesOnIf;
-    private Boolean forceBracesOnFor;
-    private Boolean forceBracesOnWhile;
-    private Boolean forceBracesOnDoWhile;
-    private BracesPlacement statementAfterClosingIf;
-    private BracesPlacement statementAfterClosingElse;
-    private BracesPlacement statementAfterClosingTry;
-    private BracesPlacement statementAfterClosingCatch;
-    private BracesPlacement statementAfterClosingFinally;
-    private BracesPlacement statementAfterClosingDo;
-    private Wrapping binaryExpressionsWrapping;
-    private Wrapping ternaryExpressionsWrapping;
-    private Wrapping assignementsWrapping;
-    private Wrapping annotationsWrapping;
-    private Wrapping enumConstantsWrapping;
+    private final Map<LeftBracesBlock, BracesPlacement> leftBracesPlacements;
+    private final Map<RightBracesBlock, BracesPlacement> rightBracesPlacements;
+    private final Map<ForcedBracesBlock, Boolean> forcedBraces;
 
-    public BracesPlacement getClassBraces() {
-        return classBraces;
+    public Braces() {
+        this.leftBracesPlacements = new HashMap<>();
+        this.rightBracesPlacements = new HashMap<>();
+        this.forcedBraces = new HashMap<>();
     }
 
-    public void setClassBraces(BracesPlacement classBraces) {
-        this.classBraces = classBraces;
+    public Map<LeftBracesBlock, BracesPlacement> getLeftBracesPlacements() {
+        return leftBracesPlacements;
     }
 
-    public BracesPlacement getMethodBraces() {
-        return methodBraces;
+    public void addLeftBracesPlacement(LeftBracesBlock block, BracesPlacement placement) {
+        this.leftBracesPlacements.put(block, placement);
     }
 
-    public void setMethodBraces(BracesPlacement methodBraces) {
-        this.methodBraces = methodBraces;
+    public Map<RightBracesBlock, BracesPlacement> getRightBracesPlacements() {
+        return rightBracesPlacements;
     }
 
-    public BracesPlacement getOtherBraces() {
-        return otherBraces;
+    public void addRightBracesPlacement(RightBracesBlock block, BracesPlacement placement) {
+        this.rightBracesPlacements.put(block, placement);
     }
 
-    public void setOtherBraces(BracesPlacement otherBraces) {
-        this.otherBraces = otherBraces;
+    public Map<ForcedBracesBlock, Boolean> getForcedBraces() {
+        return forcedBraces;
     }
 
-    public Wrapping getExtendsAndImplementsAndThrowsWrapping() {
-        return extendsAndImplementsAndThrowsWrapping;
+    public void addForcedBraces(ForcedBracesBlock block, boolean value) {
+        this.forcedBraces.put(block, value);
     }
 
-    public void setExtendsAndImplementsAndThrowsWrapping(Wrapping extendsAndImplementsAndThrowsWrapping) {
-        this.extendsAndImplementsAndThrowsWrapping = extendsAndImplementsAndThrowsWrapping;
+    public enum LeftBracesBlock {
+        CLASS, METHOD, OTHER
     }
 
-    public Wrapping getMethodsDeclarationParametersWrapping() {
-        return methodsDeclarationParametersWrapping;
+    public enum RightBracesBlock {
+        IF, ELSE, TRY, CATCH, FINALLY, DO
     }
 
-    public void setMethodsDeclarationParametersWrapping(Wrapping methodsDeclarationParametersWrapping) {
-        this.methodsDeclarationParametersWrapping = methodsDeclarationParametersWrapping;
-    }
-
-    public Wrapping getMethodsCallArgumentsWrapping() {
-        return methodsCallArgumentsWrapping;
-    }
-
-    public void setMethodsCallArgumentsWrapping(Wrapping methodsCallArgumentsWrapping) {
-        this.methodsCallArgumentsWrapping = methodsCallArgumentsWrapping;
-    }
-
-    public Wrapping getChainedMethodCallsWrapping() {
-        return chainedMethodCallsWrapping;
-    }
-
-    public void setChainedMethodCallsWrapping(Wrapping chainedMethodCallsWrapping) {
-        this.chainedMethodCallsWrapping = chainedMethodCallsWrapping;
-    }
-
-    public Boolean getForceBracesOnIf() {
-        return forceBracesOnIf;
-    }
-
-    public void setForceBracesOnIf(Boolean forceBracesOnIf) {
-        this.forceBracesOnIf = forceBracesOnIf;
-    }
-
-    public Boolean getForceBracesOnFor() {
-        return forceBracesOnFor;
-    }
-
-    public void setForceBracesOnFor(Boolean forceBracesOnFor) {
-        this.forceBracesOnFor = forceBracesOnFor;
-    }
-
-    public Boolean getForceBracesOnWhile() {
-        return forceBracesOnWhile;
-    }
-
-    public void setForceBracesOnWhile(Boolean forceBracesOnWhile) {
-        this.forceBracesOnWhile = forceBracesOnWhile;
-    }
-
-    public Boolean getForceBracesOnDoWhile() {
-        return forceBracesOnDoWhile;
-    }
-
-    public void setForceBracesOnDoWhile(Boolean forceBracesOnDoWhile) {
-        this.forceBracesOnDoWhile = forceBracesOnDoWhile;
-    }
-
-    public BracesPlacement getStatementAfterClosingIf() {
-        return statementAfterClosingIf;
-    }
-
-    public void setStatementAfterClosingIf(BracesPlacement statementAfterClosingIf) {
-        this.statementAfterClosingIf = statementAfterClosingIf;
-    }
-
-    public BracesPlacement getStatementAfterClosingElse() {
-        return statementAfterClosingElse;
-    }
-
-    public void setStatementAfterClosingElse(BracesPlacement statementAfterClosingElse) {
-        this.statementAfterClosingElse = statementAfterClosingElse;
-    }
-
-    public BracesPlacement getStatementAfterClosingTry() {
-        return statementAfterClosingTry;
-    }
-
-    public void setStatementAfterClosingTry(BracesPlacement statementAfterClosingTry) {
-        this.statementAfterClosingTry = statementAfterClosingTry;
-    }
-
-    public BracesPlacement getStatementAfterClosingCatch() {
-        return statementAfterClosingCatch;
-    }
-
-    public void setStatementAfterClosingCatch(BracesPlacement statementAfterClosingCatch) {
-        this.statementAfterClosingCatch = statementAfterClosingCatch;
-    }
-
-    public BracesPlacement getStatementAfterClosingFinally() {
-        return statementAfterClosingFinally;
-    }
-
-    public void setStatementAfterClosingFinally(BracesPlacement statementAfterClosingFinally) {
-        this.statementAfterClosingFinally = statementAfterClosingFinally;
-    }
-
-    public BracesPlacement getStatementAfterClosingDo() {
-        return statementAfterClosingDo;
-    }
-
-    public void setStatementAfterClosingDo(BracesPlacement statementAfterClosingDo) {
-        this.statementAfterClosingDo = statementAfterClosingDo;
-    }
-
-    public Wrapping getBinaryExpressionsWrapping() {
-        return binaryExpressionsWrapping;
-    }
-
-    public void setBinaryExpressionsWrapping(Wrapping binaryExpressionsWrapping) {
-        this.binaryExpressionsWrapping = binaryExpressionsWrapping;
-    }
-
-    public Wrapping getTernaryExpressionsWrapping() {
-        return ternaryExpressionsWrapping;
-    }
-
-    public void setTernaryExpressionsWrapping(Wrapping ternaryExpressionsWrapping) {
-        this.ternaryExpressionsWrapping = ternaryExpressionsWrapping;
-    }
-
-    public Wrapping getAssignementsWrapping() {
-        return assignementsWrapping;
-    }
-
-    public void setAssignementsWrapping(Wrapping assignementsWrapping) {
-        this.assignementsWrapping = assignementsWrapping;
-    }
-
-    public Wrapping getAnnotationsWrapping() {
-        return annotationsWrapping;
-    }
-
-    public void setAnnotationsWrapping(Wrapping annotationsWrapping) {
-        this.annotationsWrapping = annotationsWrapping;
-    }
-
-    public Wrapping getEnumConstantsWrapping() {
-        return enumConstantsWrapping;
-    }
-
-    public void setEnumConstantsWrapping(Wrapping enumConstantsWrapping) {
-        this.enumConstantsWrapping = enumConstantsWrapping;
+    public enum ForcedBracesBlock {
+        IF, FOR, WHILE, DO_WHILE
     }
 }

@@ -10,37 +10,37 @@ import com.vdurmont.codestyle.core.model.BracesPlacement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.vdurmont.codestyle.core.util.ValueReader.isTrue;
+import static com.vdurmont.codestyle.core.model.Braces.ForcedBracesBlock;
+import static com.vdurmont.codestyle.core.model.Braces.LeftBracesBlock;
+import static com.vdurmont.codestyle.core.model.Braces.RightBracesBlock;
+import static java.util.Map.Entry;
 
 public class CheckstyleBracesWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Braces braces) {
         addLeftCurlyStyle(checkstyle, braces);
-        addRightCurlyNextStatement(checkstyle, braces);
+        addRightCurlyStyle(checkstyle, braces);
         forceBraces(checkstyle, braces);
     }
 
     private static void addLeftCurlyStyle(Checkstyle checkstyle, Braces braces) {
-        if (braces.getClassBraces() != null) {
-            addLeftCurlyModule(checkstyle, braces.getClassBraces(),
-                    "ANNOTATION_DEF", "CLASS_DEF", "ENUM_DEF", "INTERFACE_DEF");
+        for (Entry<LeftBracesBlock, BracesPlacement> entry : braces.getLeftBracesPlacements().entrySet()) {
+            String tokens;
+            switch (entry.getKey()) {
+                case CLASS:
+                    tokens = "ANNOTATION_DEF,CLASS_DEF,ENUM_DEF,INTERFACE_DEF";
+                    break;
+                case METHOD:
+                    tokens = "CTOR_DEF,METHOD_DEF";
+                    break;
+                case OTHER:
+                    tokens = "LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,"
+                            + "LITERAL_SWITCH,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE";
+                    break;
+                default:
+                    throw new CodeStyleException("Unknown LeftBracesBlock: " + entry.getKey());
+            }
+            addCurlyModule("LeftCurly", checkstyle, getLeftCurlyOption(entry.getValue()), tokens);
         }
-        if (braces.getMethodBraces() != null) {
-            addLeftCurlyModule(checkstyle, braces.getMethodBraces(), "CTOR_DEF", "METHOD_DEF");
-        }
-        if (braces.getOtherBraces() != null) {
-            addLeftCurlyModule(checkstyle, braces.getOtherBraces(), "LITERAL_CATCH", "LITERAL_DO",
-                    "LITERAL_ELSE", "LITERAL_FINALLY", "LITERAL_FOR", "LITERAL_IF", "LITERAL_SWITCH",
-                    "LITERAL_SYNCHRONIZED", "LITERAL_TRY", "LITERAL_WHILE");
-        }
-    }
-
-    private static void addLeftCurlyModule(Checkstyle checkstyle, BracesPlacement placement, String... tokens) {
-        String option = getLeftCurlyOption(placement);
-        CheckModule module = CheckModuleBuilder.withName("LeftCurly")
-                .withProperty("option", option)
-                .withProperty("tokens", String.join(",", tokens))
-                .build();
-        checkstyle.addModule(module);
     }
 
     private static String getLeftCurlyOption(BracesPlacement placement) {
@@ -50,37 +50,36 @@ public class CheckstyleBracesWriter {
             case NEW_LINE:
                 return "nl";
         }
-        throw new CodeStyleException("Unknown BracesPlament: " + placement);
+        throw new CodeStyleException("Unknown BracesPlacement: " + placement);
     }
 
-    private static void addRightCurlyNextStatement(Checkstyle checkstyle, Braces braces) {
-        if (braces.getStatementAfterClosingTry() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingTry(), "LITERAL_TRY");
+    private static void addRightCurlyStyle(Checkstyle checkstyle, Braces braces) {
+        for (Entry<RightBracesBlock, BracesPlacement> entry : braces.getRightBracesPlacements().entrySet()) {
+            String tokens;
+            switch (entry.getKey()) {
+                case IF:
+                    tokens = "LITERAL_IF";
+                    break;
+                case ELSE:
+                    tokens = "LITERAL_ELSE";
+                    break;
+                case DO:
+                    tokens = "LITERAL_DO";
+                    break;
+                case TRY:
+                    tokens = "LITERAL_TRY";
+                    break;
+                case CATCH:
+                    tokens = "LITERAL_CATCH";
+                    break;
+                case FINALLY:
+                    tokens = "LITERAL_FINALLY";
+                    break;
+                default:
+                    throw new CodeStyleException("Unknown RightBracesBlock: " + entry.getKey());
+            }
+            addCurlyModule("RightCurly", checkstyle, getRightCurlyOption(entry.getValue()), tokens);
         }
-        if (braces.getStatementAfterClosingCatch() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingCatch(), "LITERAL_CATCH");
-        }
-        if (braces.getStatementAfterClosingFinally() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingFinally(), "LITERAL_FINALLY");
-        }
-        if (braces.getStatementAfterClosingIf() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingIf(), "LITERAL_IF");
-        }
-        if (braces.getStatementAfterClosingElse() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingElse(), "LITERAL_ELSE");
-        }
-        if (braces.getStatementAfterClosingDo() != null) {
-            addRightCurlyModule(checkstyle, braces.getStatementAfterClosingDo(), "LITERAL_DO");
-        }
-    }
-
-    private static void addRightCurlyModule(Checkstyle checkstyle, BracesPlacement placement, String... tokens) {
-        String option = getRightCurlyOption(placement);
-        CheckModule module = CheckModuleBuilder.withName("RightCurly")
-                .withProperty("option", option)
-                .withProperty("tokens", String.join(",", tokens))
-                .build();
-        checkstyle.addModule(module);
     }
 
     private static String getRightCurlyOption(BracesPlacement placement) {
@@ -90,23 +89,38 @@ public class CheckstyleBracesWriter {
             case NEW_LINE:
                 return "alone";
         }
-        throw new CodeStyleException("Unknown BracesPlament: " + placement);
+        throw new CodeStyleException("Unknown BracesPlacement: " + placement);
+    }
+
+    private static void addCurlyModule(String name, Checkstyle checkstyle, String option, String tokens) {
+        CheckModule module = CheckModuleBuilder.withName(name)
+                .withProperty("option", option)
+                .withProperty("tokens", tokens)
+                .build();
+        checkstyle.addModule(module);
     }
 
     private static void forceBraces(Checkstyle checkstyle, Braces braces) {
         List<String> tokens = new ArrayList<>();
-        if (isTrue(braces.getForceBracesOnIf())) {
-            tokens.add("LITERAL_IF");
-            tokens.add("LITERAL_ELSE");
-        }
-        if (isTrue(braces.getForceBracesOnDoWhile())) {
-            tokens.add("LITERAL_DO");
-        }
-        if (isTrue(braces.getForceBracesOnWhile())) {
-            tokens.add("LITERAL_WHILE");
-        }
-        if (isTrue(braces.getForceBracesOnFor())) {
-            tokens.add("LITERAL_FOR");
+
+        for (Entry<ForcedBracesBlock, Boolean> entry : braces.getForcedBraces().entrySet()) {
+            switch (entry.getKey()) {
+                case IF:
+                    tokens.add("LITERAL_IF");
+                    tokens.add("LITERAL_ELSE");
+                    break;
+                case DO_WHILE:
+                    tokens.add("LITERAL_DO");
+                    break;
+                case WHILE:
+                    tokens.add("LITERAL_WHILE");
+                    break;
+                case FOR:
+                    tokens.add("LITERAL_FOR");
+                    break;
+                default:
+                    throw new CodeStyleException("Unknown ForcedBracesBlock: " + entry.getKey());
+            }
         }
 
         if (tokens.size() > 0) {
