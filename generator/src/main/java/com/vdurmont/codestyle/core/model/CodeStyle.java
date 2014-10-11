@@ -11,6 +11,7 @@ public class CodeStyle {
     private Page page;
     private Spaces spaces;
     private Braces braces;
+    private Imports imports;
 
     // TODO imports, blank lines
 
@@ -62,13 +63,11 @@ public class CodeStyle {
         this.braces = braces;
     }
 
-    @Override public String toString() {
-        return "CodeStyle{" +
-                "projectName='" + projectName + '\'' +
-                ", indentation=" + indentation +
-                ", page=" + page +
-                ", spaces=" + spaces +
-                ", braces=" + braces +
-                '}';
+    public Imports getImports() {
+        return imports;
+    }
+
+    public void setImports(Imports imports) {
+        this.imports = imports;
     }
 }
