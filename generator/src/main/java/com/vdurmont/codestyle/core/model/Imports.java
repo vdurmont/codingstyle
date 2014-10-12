@@ -1,13 +1,22 @@
 package com.vdurmont.codestyle.core.model;
 
 public class Imports {
-    private Boolean avoidStarImports;
+    private Boolean avoidStarImport;
+    private Boolean avoidUnusedImports;
 
     public Boolean getAvoidStarImport() {
-        return avoidStarImports;
+        return avoidStarImport;
     }
 
-    public void setAvoidStarImports(Boolean avoidStarImports) {
-        this.avoidStarImports = avoidStarImports;
+    public void setAvoidStarImport(Boolean avoidStarImport) {
+        this.avoidStarImport = avoidStarImport;
+    }
+
+    public Boolean getAvoidUnusedImports() {
+        return avoidUnusedImports;
+    }
+
+    public void setAvoidUnusedImports(Boolean avoidUnusedImports) {
+        this.avoidUnusedImports = avoidUnusedImports;
     }
 }

@@ -10,8 +10,4 @@ public class ValueReader {
     public static boolean isTrue(Boolean bool) {
         return bool != null && bool;
     }
-
-    public static boolean isFalse(Boolean bool) {
-        return bool != null && !bool;
-    }
 }

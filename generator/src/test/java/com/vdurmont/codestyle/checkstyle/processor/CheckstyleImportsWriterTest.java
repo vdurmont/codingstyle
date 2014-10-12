@@ -22,10 +22,10 @@ public class CheckstyleImportsWriterTest {
     }
 
     @Test
-    public void buildCheckstyle_with_AllowStarImports_doesnt_add_a_module() {
+    public void buildCheckstyle_with_AvoidStarImport_false_doesnt_add_a_module() {
         // GIVEN
         Imports imports = new Imports();
-        imports.setAvoidStarImports(false);
+        imports.setAvoidStarImport(false);
 
         // WHEN
         CheckstyleImportsWriter.buildCheckstyle(this.checkstyle, imports);
@@ -36,16 +36,30 @@ public class CheckstyleImportsWriterTest {
     }
 
     @Test
-    public void buildCheckstyle_with_AllowStarImports_adds_a_module() {
+    public void buildCheckstyle_with_AvoidStarImport_adds_a_module() {
         // GIVEN
         Imports imports = new Imports();
-        imports.setAvoidStarImports(true);
+        imports.setAvoidStarImport(true);
 
         // WHEN
         CheckstyleImportsWriter.buildCheckstyle(this.checkstyle, imports);
 
         // THEN
         List<CheckModule> modules = this.checkstyle.getModules("AvoidStarImport");
+        assertEquals(1, modules.size());
+    }
+
+    @Test
+    public void buildCheckstyle_with_AvoidUnusedImports_adds_a_module() {
+        // GIVEN
+        Imports imports = new Imports();
+        imports.setAvoidUnusedImports(true);
+
+        // WHEN
+        CheckstyleImportsWriter.buildCheckstyle(this.checkstyle, imports);
+
+        // THEN
+        List<CheckModule> modules = this.checkstyle.getModules("UnusedImports");
         assertEquals(1, modules.size());
     }
 }

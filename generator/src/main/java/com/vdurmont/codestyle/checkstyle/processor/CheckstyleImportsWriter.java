@@ -9,14 +9,15 @@ import static com.vdurmont.codestyle.core.util.ValueReader.isTrue;
 
 public class CheckstyleImportsWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Imports imports) {
-        if (isTrue(imports.getAvoidStarImport())) {
-            addAvoidStarImportModule(checkstyle);
-        }
+        addModuleIfTrue(checkstyle, "AvoidStarImport", imports.getAvoidStarImport());
+        addModuleIfTrue(checkstyle, "UnusedImports", imports.getAvoidUnusedImports());
     }
 
-    private static void addAvoidStarImportModule(Checkstyle checkstyle) {
-        CheckModule module = CheckModuleBuilder.withName("AvoidStarImport")
-                .build();
-        checkstyle.addModule(module);
+    private static void addModuleIfTrue(Checkstyle checkstyle, String name, Boolean condition) {
+        if (isTrue(condition)) {
+            CheckModule module = CheckModuleBuilder.withName(name)
+                    .build();
+            checkstyle.addModule(module);
+        }
     }
 }
