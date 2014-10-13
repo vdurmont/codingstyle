@@ -14,6 +14,7 @@ public class CheckstyleWriter implements Writer<Checkstyle> {
         CheckstyleIndentationWriter.buildCheckstyle(checkstyle, codeStyle.getIndentation());
         CheckstyleAnnotationsWriter.buildCheckstyle(checkstyle, codeStyle.getAnnotations());
         CheckstyleImportsWriter.buildCheckstyle(checkstyle, codeStyle.getImports());
+        CheckstyleDocumentationWriter.buildCheckstyle(checkstyle, codeStyle.getDocumentation());
 
         return checkstyle;
     }

@@ -12,8 +12,7 @@ public class CodeStyle {
     private Spaces spaces;
     private Braces braces;
     private Imports imports;
-
-    // TODO imports, blank lines
+    private Documentation documentation;
 
     public String getProjectName() {
         return projectName;
@@ -69,5 +68,13 @@ public class CodeStyle {
 
     public void setImports(Imports imports) {
         this.imports = imports;
+    }
+
+    public Documentation getDocumentation() {
+        return documentation;
+    }
+
+    public void setDocumentation(Documentation documentation) {
+        this.documentation = documentation;
     }
 }
