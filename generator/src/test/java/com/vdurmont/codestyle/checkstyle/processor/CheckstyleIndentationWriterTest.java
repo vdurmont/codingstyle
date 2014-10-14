@@ -1,5 +1,6 @@
 package com.vdurmont.codestyle.checkstyle.processor;
 
+import com.puppycrawl.tools.checkstyle.Main;
 import com.vdurmont.codestyle.checkstyle.model.CheckModule;
 import com.vdurmont.codestyle.checkstyle.model.CheckProperty;
 import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
@@ -10,6 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -51,5 +56,22 @@ public class CheckstyleIndentationWriterTest {
         assertEquals(1, modules.size());
         CheckProperty format = modules.get(0).getProperty("format");
         assertEquals("^\\t* +\\t*\\S", format.getValue());
+    }
+
+    @Test
+    public void experimentation() throws FileNotFoundException {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentCharacter(IndentCharacter.TAB);
+
+        // WHEN
+        CheckstyleIndentationWriter.buildCheckstyle(this.checkstyle, indentation);
+
+        CheckstyleConfigProcessor processor = new CheckstyleConfigProcessor();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        processor.writeToStream(checkstyle, os);
+
+        InputStream stream = new ByteArrayInputStream(os.toByteArray());
+        Main.launchAudit(stream, "/tmp/File1.java");
     }
 }
