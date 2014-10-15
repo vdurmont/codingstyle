@@ -9,20 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@XmlRootElement(name = "checkstyle")
+@XmlRootElement(name = "module")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Checkstyle {
     @XmlAttribute
-    private String name;
+    private final String name = "Checker";
     @XmlElement(name = "module")
     private List<CheckModule> modules = new ArrayList<>();
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<CheckModule> getModules(String name) {

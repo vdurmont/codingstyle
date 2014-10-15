@@ -9,7 +9,6 @@ public class CheckstyleWriter implements Writer<Checkstyle> {
     public Checkstyle write(CodeStyle codeStyle) {
         // TODO code
         Checkstyle checkstyle = new Checkstyle();
-        checkstyle.setName("Test");
 
         CheckstyleIndentationWriter.buildCheckstyle(checkstyle, codeStyle.getIndentation());
         CheckstyleAnnotationsWriter.buildCheckstyle(checkstyle, codeStyle.getAnnotations());
