@@ -33,10 +33,15 @@ public class CheckstyleIndentationWriter {
     }
 
     private static void checkIndentSize(Checkstyle checkstyle, Integer indentSize, Integer labelIndentSize) {
-        CheckModule module = CheckModuleBuilder.withName("Indentation")
-                .withProperty("basicOffset", indentSize)
-                .withProperty("caseIndent", labelIndentSize)
-                .build();
-        checkstyle.addModule(module);
+        if (indentSize != null || labelIndentSize != null) {
+            CheckModuleBuilder builder = CheckModuleBuilder.withName("Indentation");
+            if (indentSize != null) {
+                builder.withProperty("basicOffset", indentSize);
+            }
+            if (labelIndentSize != null) {
+                builder.withProperty("caseIndent", labelIndentSize);
+            }
+            checkstyle.addModule(builder.build());
+        }
     }
 }

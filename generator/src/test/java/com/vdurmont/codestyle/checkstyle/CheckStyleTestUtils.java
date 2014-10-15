@@ -8,6 +8,7 @@ import com.vdurmont.codestyle.core.model.CodeStyle;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,6 +20,14 @@ public class CheckStyleTestUtils {
         CheckstyleConfigProcessor processor = new CheckstyleConfigProcessor();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         processor.writeToStream(checkstyle, outputStream);
+
+        // TODO remove that
+        ByteArrayInputStream plop = new ByteArrayInputStream(outputStream.toByteArray());
+        int n = plop.available();
+        byte[] bytes = new byte[n];
+        plop.read(bytes, 0, n);
+        String s = new String(bytes, StandardCharsets.UTF_8);
+        System.out.println(s);
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
         int numErrors = CheckStyleLauncher.getNumErrors(inputStream, testFilePath);
