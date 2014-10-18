@@ -13,14 +13,13 @@ public final class CheckStyleLauncher {
     private CheckStyleLauncher() {
     }
 
-    public static int getNumErrors(InputStream configFileStream, String testFilePath) {
+    public static int getNumErrors(InputStream configFileStream, File testFile) {
         Checker checker = null;
         try {
             final Properties props = System.getProperties();
             final Configuration config = loadConfig(configFileStream, props);
             final AuditListener listener = new DefaultLogger(System.out, false);
             checker = createChecker(config, listener);
-            final File testFile = new File(testFilePath);
             return checker.process(Lists.newArrayList(testFile));
         } catch (Exception e) {
             throw new RuntimeException(e);
