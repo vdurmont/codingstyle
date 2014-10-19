@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static com.vdurmont.codestyle.checkstyle.CheckStyleTestUtils.assertHasCheckstyleErrors;
 import static com.vdurmont.codestyle.checkstyle.CheckStyleTestUtils.assertNoCheckstyleErrors;
 import static com.vdurmont.codestyle.checkstyle.CheckStyleTestUtils.assertNumCheckstyleErrors;
 
@@ -41,5 +42,27 @@ public class CheckstyleIndentationWriterTest {
 
         // THEN
         assertNoCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_TABS_fails_if_the_file_has_spaces() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentCharacter(IndentCharacter.TAB);
+        this.codeStyle.setIndentation(indentation);
+
+        // THEN
+        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_TAB_is_ok_if_the_file_has_only_tabs() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentCharacter(IndentCharacter.TAB);
+        this.codeStyle.setIndentation(indentation);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithTabs.java");
     }
 }

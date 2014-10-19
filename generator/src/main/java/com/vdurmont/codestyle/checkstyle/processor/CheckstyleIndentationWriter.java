@@ -24,12 +24,18 @@ public class CheckstyleIndentationWriter {
     }
 
     private static void addTabModule(Checkstyle checkstyle) {
+        CheckModule treewalker = checkstyle.getModule("TreeWalker");
+        if (treewalker == null) {
+            treewalker = CheckModuleBuilder.withName("TreeWalker").build();
+            checkstyle.addModule(treewalker);
+        }
+
         CheckModule module = CheckModuleBuilder.withName("RegexpSinglelineJava")
                 .withProperty("format", "^\\t* +\\t*\\S")
                 .withProperty("message", "Line has leading space characters.")
                 .withProperty("ignoreComments", "true")
                 .build();
-        checkstyle.addModule(module);
+        treewalker.addModule(module);
     }
 
     private static void checkIndentSize(Checkstyle checkstyle, Integer indentSize, Integer labelIndentSize) {

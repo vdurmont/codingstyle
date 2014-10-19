@@ -1,5 +1,7 @@
 package com.vdurmont.codestyle.checkstyle.model;
 
+import com.vdurmont.codestyle.core.exception.CodeStyleException;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -17,6 +19,8 @@ public class CheckModule {
     private String name;
     @XmlElement(name = "property")
     private List<CheckProperty> properties = new ArrayList<>();
+    @XmlElement(name = "module")
+    private List<CheckModule> modules = new ArrayList<>();
 
     public CheckModule() {
     }
@@ -54,5 +58,34 @@ public class CheckModule {
 
     public void addProperties(CheckProperty... property) {
         Arrays.stream(property).forEach(this::addProperty);
+    }
+
+    public List<CheckModule> getModules(String name) {
+        return this.modules.stream()
+                .filter(m -> m.getName().equals(name))
+                .collect(Collectors.toList());
+    }
+
+    public CheckModule getModule(String name) {
+        List<CheckModule> modules = this.getModules(name);
+        if (modules.size() == 0) {
+            return null;
+        } else if (modules.size() == 1) {
+            return modules.get(0);
+        } else {
+            throw new CodeStyleException("Cannot get a single module with name \"" + name + "\": found " + modules.size());
+        }
+    }
+
+    public List<CheckModule> getModules() {
+        return modules;
+    }
+
+    public void setModules(List<CheckModule> modules) {
+        this.modules = modules;
+    }
+
+    public void addModule(CheckModule module) {
+        this.modules.add(module);
     }
 }
