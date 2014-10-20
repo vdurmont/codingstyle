@@ -1,5 +1,6 @@
 package com.vdurmont.codestyle.checkstyle.model;
 
+import com.vdurmont.codestyle.checkstyle.util.CheckModuleBuilder;
 import com.vdurmont.codestyle.core.exception.CodeStyleException;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -75,6 +76,15 @@ public class CheckModule {
         } else {
             throw new CodeStyleException("Cannot get a single module with name \"" + name + "\": found " + modules.size());
         }
+    }
+
+    public CheckModule getOrCreateModule(String name) {
+        CheckModule module = this.getModule(name);
+        if (module == null) {
+            module = CheckModuleBuilder.withName(name).build();
+            this.addModule(module);
+        }
+        return module;
     }
 
     public List<CheckModule> getModules() {

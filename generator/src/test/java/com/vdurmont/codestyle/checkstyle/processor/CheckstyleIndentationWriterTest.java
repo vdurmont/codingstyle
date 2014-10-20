@@ -65,4 +65,28 @@ public class CheckstyleIndentationWriterTest {
         // THEN
         assertNoCheckstyleErrors(this.codeStyle, "FileWithTabs.java");
     }
+
+    @Test
+    public void buildCheckstyle_with_SPACE_and_indentSize_2_is_ok_if_the_file_has_a_2_spaces_indent() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentCharacter(IndentCharacter.SPACE);
+        indentation.setIndentSize(2);
+        this.codeStyle.setIndentation(indentation);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWith2Spaces.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_SPACE_and_indentSize_2_fails_if_the_file_has_a_4_spaces_indent() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentCharacter(IndentCharacter.SPACE);
+        indentation.setIndentSize(2);
+        this.codeStyle.setIndentation(indentation);
+
+        // THEN
+        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+    }
 }

@@ -24,12 +24,7 @@ public class CheckstyleIndentationWriter {
     }
 
     private static void addTabModule(Checkstyle checkstyle) {
-        CheckModule treewalker = checkstyle.getModule("TreeWalker");
-        if (treewalker == null) {
-            treewalker = CheckModuleBuilder.withName("TreeWalker").build();
-            checkstyle.addModule(treewalker);
-        }
-
+        CheckModule treewalker = checkstyle.getOrCreateModule("TreeWalker");
         CheckModule module = CheckModuleBuilder.withName("RegexpSinglelineJava")
                 .withProperty("format", "^\\t* +\\t*\\S")
                 .withProperty("message", "Line has leading space characters.")
@@ -40,6 +35,7 @@ public class CheckstyleIndentationWriter {
 
     private static void checkIndentSize(Checkstyle checkstyle, Integer indentSize, Integer labelIndentSize) {
         if (indentSize != null || labelIndentSize != null) {
+            CheckModule treewalker = checkstyle.getOrCreateModule("TreeWalker");
             CheckModuleBuilder builder = CheckModuleBuilder.withName("Indentation");
             if (indentSize != null) {
                 builder.withProperty("basicOffset", indentSize);
@@ -47,7 +43,7 @@ public class CheckstyleIndentationWriter {
             if (labelIndentSize != null) {
                 builder.withProperty("caseIndent", labelIndentSize);
             }
-            checkstyle.addModule(builder.build());
+            treewalker.addModule(builder.build());
         }
     }
 }
