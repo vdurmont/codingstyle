@@ -93,11 +93,12 @@ public class CheckstyleBracesWriter {
     }
 
     private static void addCurlyModule(String name, Checkstyle checkstyle, String option, String tokens) {
+        CheckModule treeWalker = checkstyle.getOrCreateModule("TreeWalker");
         CheckModule module = CheckModuleBuilder.withName(name)
                 .withProperty("option", option)
                 .withProperty("tokens", tokens)
                 .build();
-        checkstyle.addModule(module);
+        treeWalker.addModule(module);
     }
 
     private static void forceBraces(Checkstyle checkstyle, Braces braces) {

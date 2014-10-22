@@ -13,13 +13,15 @@ public class CheckstyleIndentationWriter {
     }
 
     private static void checkIndentCharacter(Checkstyle checkstyle, IndentCharacter character) {
-        switch (character) {
-            case TAB:
-                addTabModule(checkstyle);
-                break;
-            case SPACE:
-                checkstyle.addModule(new CheckModule("FileTabCharacter"));
-                break;
+        if (character != null) {
+            switch (character) {
+                case TAB:
+                    addTabModule(checkstyle);
+                    break;
+                case SPACE:
+                    checkstyle.addModule(new CheckModule("FileTabCharacter"));
+                    break;
+            }
         }
     }
 
