@@ -58,6 +58,30 @@ public class CheckstyleBracesWriterTest {
     }
 
     @Test
+    public void buildCheckstyle_with_OTHER_LeftCurly_NEW_LINE() {
+        // GIVEN
+        Braces braces = new Braces();
+        braces.addLeftBracesPlacement(Braces.LeftBracesBlock.OTHER, BracesPlacement.NEW_LINE);
+        this.codeStyle.setBraces(braces);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyNewLine.java");
+        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyEndOfLine.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_OTHER_LeftCurly_END_OF_LINE() {
+        // GIVEN
+        Braces braces = new Braces();
+        braces.addLeftBracesPlacement(Braces.LeftBracesBlock.OTHER, BracesPlacement.END_OF_LINE);
+        this.codeStyle.setBraces(braces);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyEndOfLine.java");
+        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyNewLine.java");
+    }
+
+    @Test
     public void buildCheckstyle_with_METHOD_LeftCurly_NEW_LINE() {
         // GIVEN
         Braces braces = new Braces();
