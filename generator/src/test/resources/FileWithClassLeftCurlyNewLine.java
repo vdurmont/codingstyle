@@ -1,3 +1,3 @@
-public class FileWithTabs
+public class FileWithClassLeftCurlyNewLine
 {
 }

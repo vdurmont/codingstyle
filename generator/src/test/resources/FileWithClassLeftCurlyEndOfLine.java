@@ -1,2 +1,2 @@
-public class FileWithTabs {
+public class FileWithClassLeftCurlyEndOfLine {
 }

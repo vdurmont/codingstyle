@@ -1,7 +1,7 @@
-public class FileWithSpaces {
+public class FileWithMethodLeftCurlyNewLine {
     private final String test;
 
-    public FileWithSpaces(String test)
+    public FileWithMethodLeftCurlyNewLine(String test)
     {
         this.test = test;
     }
