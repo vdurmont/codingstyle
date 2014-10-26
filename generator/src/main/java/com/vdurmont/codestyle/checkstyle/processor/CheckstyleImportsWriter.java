@@ -1,5 +1,6 @@
 package com.vdurmont.codestyle.checkstyle.processor;
 
+import com.vdurmont.codestyle.checkstyle.model.CheckModule;
 import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
 import com.vdurmont.codestyle.core.model.Imports;
 
@@ -7,7 +8,8 @@ import static com.vdurmont.codestyle.checkstyle.processor.CheckstyleWriterUtil.a
 
 public class CheckstyleImportsWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Imports imports) {
-        addModuleIfTrue(checkstyle, "AvoidStarImport", imports.getAvoidStarImport());
-        addModuleIfTrue(checkstyle, "UnusedImports", imports.getAvoidUnusedImports());
+        CheckModule treeWalker = checkstyle.getOrCreateModule("TreeWalker");
+        addModuleIfTrue(treeWalker, "AvoidStarImport", imports.getAvoidStarImport());
+        addModuleIfTrue(treeWalker, "UnusedImports", imports.getAvoidUnusedImports());
     }
 }

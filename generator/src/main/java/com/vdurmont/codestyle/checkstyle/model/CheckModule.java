@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @XmlRootElement(name = "module")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CheckModule {
+public class CheckModule implements CheckModuleHolder {
     @XmlAttribute
     private String name;
     @XmlElement(name = "property")
@@ -95,6 +95,7 @@ public class CheckModule {
         this.modules = modules;
     }
 
+    @Override
     public void addModule(CheckModule module) {
         this.modules.add(module);
     }
