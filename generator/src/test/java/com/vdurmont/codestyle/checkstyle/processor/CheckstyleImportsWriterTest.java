@@ -61,4 +61,39 @@ public class CheckstyleImportsWriterTest {
         assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports.java");
         assertNoCheckstyleErrors(this.codeStyle, "FileWithStarImports.java");
     }
+
+    @Test
+    public void buildCheckstyle_with_AvoidUnusedImports_true() {
+        // GIVEN
+        Imports imports = new Imports();
+        imports.setAvoidUnusedImports(true);
+        this.codeStyle.setImports(imports);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithUnusedImports.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_AvoidUnusedImports_false() {
+        // GIVEN
+        Imports imports = new Imports();
+        imports.setAvoidUnusedImports(false);
+        this.codeStyle.setImports(imports);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_AvoidUnusedImports_undefined() {
+        // GIVEN
+        Imports imports = new Imports();
+        this.codeStyle.setImports(imports);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports.java");
+    }
 }
