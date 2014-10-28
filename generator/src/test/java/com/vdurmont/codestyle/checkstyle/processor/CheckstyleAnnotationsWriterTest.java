@@ -1,37 +1,46 @@
 package com.vdurmont.codestyle.checkstyle.processor;
 
-import com.vdurmont.codestyle.checkstyle.model.CheckModule;
-import com.vdurmont.codestyle.checkstyle.model.Checkstyle;
 import com.vdurmont.codestyle.core.model.Annotations;
+import com.vdurmont.codestyle.core.model.CodeStyle;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
+import static com.vdurmont.TestUtils.generateCodeStyle;
+import static com.vdurmont.codestyle.checkstyle.CheckStyleTestUtils.assertNoCheckstyleErrors;
+import static com.vdurmont.codestyle.checkstyle.CheckStyleTestUtils.assertNumCheckstyleErrors;
 
 @RunWith(JUnit4.class)
 public class CheckstyleAnnotationsWriterTest {
-    private Checkstyle checkstyle;
+    private CodeStyle codeStyle;
 
     @Before
     public void setUp() {
-        this.checkstyle = new Checkstyle();
+        this.codeStyle = generateCodeStyle();
     }
 
     @Test
-    public void buildCheckstyle_with_forceOverride_adds_the_MissingOverride_module() {
+    public void buildCheckstyle_with_FORCE_OVERRIDE_true() {
         // GIVEN
         Annotations annotations = new Annotations();
         annotations.setForceOverride(true);
-
-        // WHEN
-        CheckstyleAnnotationsWriter.buildCheckstyle(this.checkstyle, annotations);
+        this.codeStyle.setAnnotations(annotations);
 
         // THEN
-        List<CheckModule> modules = this.checkstyle.getModules("MissingOverride");
-        assertEquals(1, modules.size());
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMissingOverride.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride.java");
+    }
+
+    @Test
+    public void buildCheckstyle_with_FORCE_OVERRIDE_false() {
+        // GIVEN
+        Annotations annotations = new Annotations();
+        annotations.setForceOverride(false);
+        this.codeStyle.setAnnotations(annotations);
+
+        // THEN
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithMissingOverride.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride.java");
     }
 }
