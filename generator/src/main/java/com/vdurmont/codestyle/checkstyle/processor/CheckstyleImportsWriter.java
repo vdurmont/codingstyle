@@ -11,5 +11,6 @@ public class CheckstyleImportsWriter {
         CheckModule treeWalker = checkstyle.getOrCreateModule("TreeWalker");
         addModuleIfTrue(treeWalker, "AvoidStarImport", imports.getAvoidStarImport());
         addModuleIfTrue(treeWalker, "UnusedImports", imports.getAvoidUnusedImports());
+        addModuleIfTrue(treeWalker, "RedundantImport", imports.getAvoidRedundantImports());
     }
 }

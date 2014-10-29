@@ -3,6 +3,7 @@ package com.vdurmont.codestyle.core.model;
 public class Imports {
     private Boolean avoidStarImport;
     private Boolean avoidUnusedImports;
+    private Boolean avoidRedundantImports;
 
     public Boolean getAvoidStarImport() {
         return avoidStarImport;
@@ -18,5 +19,13 @@ public class Imports {
 
     public void setAvoidUnusedImports(Boolean avoidUnusedImports) {
         this.avoidUnusedImports = avoidUnusedImports;
+    }
+
+    public Boolean getAvoidRedundantImports() {
+        return avoidRedundantImports;
+    }
+
+    public void setAvoidRedundantImports(Boolean avoidRedundantImports) {
+        this.avoidRedundantImports = avoidRedundantImports;
     }
 }
