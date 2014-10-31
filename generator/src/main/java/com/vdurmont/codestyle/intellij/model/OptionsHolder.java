@@ -13,6 +13,10 @@ public abstract class OptionsHolder {
     private List<Option> options;
     private Map<String, Option> optionsByName;
 
+    public OptionsHolder() {
+        this.optionsByName = new HashMap<>();
+    }
+
     public List<Option> getOptions() {
         return options;
     }

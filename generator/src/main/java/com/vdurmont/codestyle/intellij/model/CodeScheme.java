@@ -18,6 +18,10 @@ public class CodeScheme extends OptionsHolder {
     private List<CodeStyleSetting> codeStyleSettings;
     private Map<String, CodeStyleSetting> codeStyleSettingsByName;
 
+    public CodeScheme() {
+        this.codeStyleSettingsByName = new HashMap<>();
+    }
+
     public String getName() {
         return name;
     }
