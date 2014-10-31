@@ -30,7 +30,7 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithTabs.java");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithTabs");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithSpaces");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces");
     }
 
     @Test
@@ -63,7 +63,7 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithTabs.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithTabs");
     }
 
     @Test
@@ -75,7 +75,7 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWith2Spaces.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWith2Spaces");
     }
 
     @Test
@@ -87,6 +87,6 @@ public class CheckstyleIndentationWriterTest {
         this.codeStyle.setIndentation(indentation);
 
         // THEN
-        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces.java");
+        assertHasCheckstyleErrors(this.codeStyle, "FileWithSpaces");
     }
 }

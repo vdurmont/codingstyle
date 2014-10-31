@@ -28,8 +28,8 @@ public class CheckstyleAnnotationsWriterTest {
         this.codeStyle.setAnnotations(annotations);
 
         // THEN
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMissingOverride.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride.java");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMissingOverride");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride");
     }
 
     @Test
@@ -40,7 +40,7 @@ public class CheckstyleAnnotationsWriterTest {
         this.codeStyle.setAnnotations(annotations);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithMissingOverride.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithMissingOverride");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithNoMissingOverride");
     }
 }

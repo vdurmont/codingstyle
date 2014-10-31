@@ -28,8 +28,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithStarImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithStarImports");
     }
 
     @Test
@@ -40,8 +40,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithStarImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithStarImports");
     }
 
     @Test
@@ -51,8 +51,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithStarImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutStarImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithStarImports");
     }
 
     @Test
@@ -63,8 +63,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithUnusedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithUnusedImports");
     }
 
     @Test
@@ -75,8 +75,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports");
     }
 
     @Test
@@ -86,8 +86,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutUnusedImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithUnusedImports");
     }
 
     @Test
@@ -98,9 +98,9 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutRedundantImports.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithRedundantJavaLangImports.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithRedundantRepeatedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutRedundantImports");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithRedundantJavaLangImports");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithRedundantRepeatedImports");
     }
 
     @Test
@@ -111,8 +111,8 @@ public class CheckstyleImportsWriterTest {
         this.codeStyle.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutRedundantImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithRedundantJavaLangImports.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithRedundantRepeatedImports.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithoutRedundantImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithRedundantJavaLangImports");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithRedundantRepeatedImports");
     }
 }

@@ -29,8 +29,8 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithClassLeftCurlyNewLine.java");
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithClassLeftCurlyEndOfLine.java");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithClassLeftCurlyNewLine");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithClassLeftCurlyEndOfLine");
     }
 
     @Test
@@ -41,8 +41,8 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithClassLeftCurlyNewLine.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithClassLeftCurlyEndOfLine.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithClassLeftCurlyNewLine");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithClassLeftCurlyEndOfLine");
     }
 
     @Test
@@ -53,8 +53,8 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithMethodLeftCurlyEndOfLine.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMethodLeftCurlyNewLine.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithMethodLeftCurlyEndOfLine");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMethodLeftCurlyNewLine");
     }
 
     @Test
@@ -65,8 +65,8 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyNewLine.java");
-        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyEndOfLine.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyNewLine");
+        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyEndOfLine");
     }
 
     @Test
@@ -77,8 +77,8 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyEndOfLine.java");
-        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyNewLine.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithOtherLeftCurlyEndOfLine");
+        assertNumCheckstyleErrors(4, this.codeStyle, "FileWithOtherLeftCurlyNewLine");
     }
 
     @Test
@@ -89,7 +89,7 @@ public class CheckstyleBracesWriterTest {
         this.codeStyle.setBraces(braces);
 
         // THEN
-        assertNoCheckstyleErrors(this.codeStyle, "FileWithMethodLeftCurlyNewLine.java");
-        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMethodLeftCurlyEndOfLine.java");
+        assertNoCheckstyleErrors(this.codeStyle, "FileWithMethodLeftCurlyNewLine");
+        assertNumCheckstyleErrors(1, this.codeStyle, "FileWithMethodLeftCurlyEndOfLine");
     }
 }

@@ -44,15 +44,15 @@ public class CheckStyleTestUtils {
         }
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
-        File testFile = new File("src/test/resources/" + testFilePath);
+        File testFile = new File("src/test/resources/checkstyle/" + testFilePath + ".java");
         return CheckStyleLauncher.getNumErrors(inputStream, testFile);
     }
 
     private static void displayGeneratedCheckstyle(byte[] inputBytes) {
-        ByteArrayInputStream plop = new ByteArrayInputStream(inputBytes);
-        int n = plop.available();
+        ByteArrayInputStream stream = new ByteArrayInputStream(inputBytes);
+        int n = stream.available();
         byte[] bytes = new byte[n];
-        plop.read(bytes, 0, n);
+        stream.read(bytes, 0, n);
         String s = new String(bytes, StandardCharsets.UTF_8);
         System.out.println(s);
     }
