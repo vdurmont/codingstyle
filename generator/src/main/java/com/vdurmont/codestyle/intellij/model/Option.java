@@ -28,19 +28,11 @@ public class Option {
         return stringValue;
     }
 
-    public void setStringValue(String stringValue) {
-        this.stringValue = stringValue;
-    }
-
     public Boolean getBooleanValue() {
         if (stringValue == null) {
             return null;
         }
         return Boolean.valueOf(stringValue);
-    }
-
-    public void setBooleanValue(Boolean booleanValue) {
-        this.stringValue = booleanValue.toString();
     }
 
     public Integer getIntegerValue() {
@@ -50,8 +42,8 @@ public class Option {
         return Integer.valueOf(stringValue);
     }
 
-    public void setIntegerValue(Integer integerValue) {
-        this.stringValue = integerValue.toString();
+    public void setValue(Object value) {
+        this.stringValue = value.toString();
     }
 
     public Value getValueTag() {

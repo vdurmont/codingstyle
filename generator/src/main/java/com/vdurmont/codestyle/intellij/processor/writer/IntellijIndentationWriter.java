@@ -12,27 +12,27 @@ public class IntellijIndentationWriter {
         Value value = otherIndentOptions.getOrCreateValueTag();
         if (indentation.getIndentCharacter() != null) {
             Option useTabCharacter = value.getOrCreateOption("USE_TAB_CHARACTER");
-            useTabCharacter.setBooleanValue(indentation.getIndentCharacter() == IndentCharacter.TAB);
+            useTabCharacter.setValue(indentation.getIndentCharacter() == IndentCharacter.TAB);
         }
         if (indentation.getTabSize() != null) {
             Option option = value.getOrCreateOption("TAB_SIZE");
-            option.setIntegerValue(indentation.getTabSize());
+            option.setValue(indentation.getTabSize());
         }
         if (indentation.getIndentSize() != null) {
             Option option = value.getOrCreateOption("INDENT_SIZE");
-            option.setIntegerValue(indentation.getIndentSize());
+            option.setValue(indentation.getIndentSize());
         }
         if (indentation.getContinuationIndentSize() != null) {
             Option option = value.getOrCreateOption("CONTINUATION_INDENT_SIZE");
-            option.setIntegerValue(indentation.getContinuationIndentSize());
+            option.setValue(indentation.getContinuationIndentSize());
         }
         if (indentation.getLabelIndentAbsolute() != null) {
             Option option = value.getOrCreateOption("LABEL_INDENT_ABSOLUTE");
-            option.setBooleanValue(indentation.getLabelIndentAbsolute());
+            option.setValue(indentation.getLabelIndentAbsolute());
         }
         if (indentation.getLabelIndentSize() != null) {
             Option option = value.getOrCreateOption("LABEL_INDENT_SIZE");
-            option.setIntegerValue(indentation.getLabelIndentSize());
+            option.setValue(indentation.getLabelIndentSize());
         }
     }
 }
