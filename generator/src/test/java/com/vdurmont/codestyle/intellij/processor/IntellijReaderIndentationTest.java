@@ -18,7 +18,7 @@ public class IntellijReaderIndentationTest {
         // GIVEN
 
         // WHEN
-        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithName");
+        CodeStyle style = IntellijTestUtils.readCodeStyle("EmptyConfig");
 
         // THEN
         Indentation indentation = style.getIndentation();
@@ -47,5 +47,29 @@ public class IntellijReaderIndentationTest {
         // THEN
         Indentation indentation = style.getIndentation();
         assertEquals(IndentCharacter.SPACE, indentation.getIndentCharacter());
+    }
+
+    @Test
+    public void toIndentation_with_no_TAB_SIZE_sets_the_TabSize_to_null() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertNull(indentation.getTabSize());
+    }
+
+    @Test
+    public void toIndentation_with_a_TAB_SIZE_sets_the_TabSize() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithTabSize");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertEquals(2, (int) indentation.getTabSize());
     }
 }
