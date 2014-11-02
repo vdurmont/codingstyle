@@ -22,5 +22,9 @@ public class IntellijIndentationWriter {
             Option useTabCharacter = value.getOrCreateOption("INDENT_SIZE");
             useTabCharacter.setIntegerValue(indentation.getIndentSize());
         }
+        if (indentation.getContinuationIndentSize() != null) {
+            Option useTabCharacter = value.getOrCreateOption("CONTINUATION_INDENT_SIZE");
+            useTabCharacter.setIntegerValue(indentation.getContinuationIndentSize());
+        }
     }
 }

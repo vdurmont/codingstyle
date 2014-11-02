@@ -96,4 +96,28 @@ public class IntellijIndentationReaderTest {
         Indentation indentation = style.getIndentation();
         assertEquals(2, (int) indentation.getIndentSize());
     }
+
+    @Test
+    public void toIndentation_with_no_CONTINUATION_INDENT_SIZE_sets_the_ContinuationIndentSize_to_null() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertNull(indentation.getContinuationIndentSize());
+    }
+
+    @Test
+    public void toIndentation_with_a_CONTINUATION_INDENT_SIZE_sets_the_ContinuationIndentSize() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithContinuationIndentSize");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertEquals(4, (int) indentation.getContinuationIndentSize());
+    }
 }

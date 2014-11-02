@@ -85,4 +85,20 @@ public class IntellijIndentationWriterTest {
         int indentSize = indentOptions.getOption("INDENT_SIZE").getIntegerValue();
         assertEquals(4, indentSize);
     }
+
+    @Test
+    public void write_with_ContinuationIndentSize_sets_the_CONTINUATION_INDENT_SIZE() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setContinuationIndentSize(4);
+
+
+        // WHEN
+        IntellijIndentationWriter.write(scheme, indentation);
+
+        // THEN
+        Value indentOptions = this.scheme.getOption("OTHER_INDENT_OPTIONS").getValueTag();
+        int indentSize = indentOptions.getOption("CONTINUATION_INDENT_SIZE").getIntegerValue();
+        assertEquals(4, indentSize);
+    }
 }
