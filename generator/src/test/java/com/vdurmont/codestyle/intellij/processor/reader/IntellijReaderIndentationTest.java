@@ -1,4 +1,4 @@
-package com.vdurmont.codestyle.intellij.processor;
+package com.vdurmont.codestyle.intellij.processor.reader;
 
 import com.vdurmont.codestyle.core.model.CodeStyle;
 import com.vdurmont.codestyle.core.model.IndentCharacter;

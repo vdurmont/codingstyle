@@ -3,7 +3,7 @@ package com.vdurmont.codestyle.intellij;
 import com.vdurmont.codestyle.core.model.CodeStyle;
 import com.vdurmont.codestyle.intellij.model.CodeScheme;
 import com.vdurmont.codestyle.intellij.processor.IntellijConfigProcessor;
-import com.vdurmont.codestyle.intellij.processor.IntellijReader;
+import com.vdurmont.codestyle.intellij.processor.reader.IntellijReader;
 
 import java.io.File;
 import java.io.FileInputStream;
