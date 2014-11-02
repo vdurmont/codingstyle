@@ -133,4 +133,16 @@ public class IntellijIndentationReaderTest {
         Indentation indentation = style.getIndentation();
         assertTrue(indentation.getLabelIndentAbsolute());
     }
+
+    @Test
+    public void toIndentation_with_a_LABEL_INDENT_SIZE_sets_the_LabelIndentSize() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentSize");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertEquals(4, (int) indentation.getLabelIndentSize());
+    }
 }

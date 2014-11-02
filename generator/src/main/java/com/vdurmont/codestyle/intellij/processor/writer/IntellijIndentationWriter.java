@@ -30,5 +30,9 @@ public class IntellijIndentationWriter {
             Option option = value.getOrCreateOption("LABEL_INDENT_ABSOLUTE");
             option.setBooleanValue(indentation.getLabelIndentAbsolute());
         }
+        if (indentation.getLabelIndentSize() != null) {
+            Option option = value.getOrCreateOption("LABEL_INDENT_SIZE");
+            option.setIntegerValue(indentation.getLabelIndentSize());
+        }
     }
 }
