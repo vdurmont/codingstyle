@@ -18,5 +18,9 @@ public class IntellijIndentationWriter {
             Option useTabCharacter = value.getOrCreateOption("TAB_SIZE");
             useTabCharacter.setIntegerValue(indentation.getTabSize());
         }
+        if (indentation.getIndentSize() != null) {
+            Option useTabCharacter = value.getOrCreateOption("INDENT_SIZE");
+            useTabCharacter.setIntegerValue(indentation.getIndentSize());
+        }
     }
 }

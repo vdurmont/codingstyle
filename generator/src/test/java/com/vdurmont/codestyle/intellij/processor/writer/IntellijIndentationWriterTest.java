@@ -69,4 +69,20 @@ public class IntellijIndentationWriterTest {
         int tabSize = indentOptions.getOption("TAB_SIZE").getIntegerValue();
         assertEquals(4, tabSize);
     }
+
+    @Test
+    public void write_with_IndentSize_sets_the_INDENT_SIZE() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setIndentSize(4);
+
+
+        // WHEN
+        IntellijIndentationWriter.write(scheme, indentation);
+
+        // THEN
+        Value indentOptions = this.scheme.getOption("OTHER_INDENT_OPTIONS").getValueTag();
+        int indentSize = indentOptions.getOption("INDENT_SIZE").getIntegerValue();
+        assertEquals(4, indentSize);
+    }
 }

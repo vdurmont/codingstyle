@@ -72,4 +72,28 @@ public class IntellijIndentationReaderTest {
         Indentation indentation = style.getIndentation();
         assertEquals(2, (int) indentation.getTabSize());
     }
+
+    @Test
+    public void toIndentation_with_no_INDENT_SIZE_sets_the_IndentSize_to_null() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertNull(indentation.getIndentSize());
+    }
+
+    @Test
+    public void toIndentation_with_a_INDENT_SIZE_sets_the_IndentSize() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithIndentSize");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertEquals(2, (int) indentation.getIndentSize());
+    }
 }
