@@ -15,16 +15,20 @@ public class IntellijIndentationWriter {
             useTabCharacter.setBooleanValue(indentation.getIndentCharacter() == IndentCharacter.TAB);
         }
         if (indentation.getTabSize() != null) {
-            Option useTabCharacter = value.getOrCreateOption("TAB_SIZE");
-            useTabCharacter.setIntegerValue(indentation.getTabSize());
+            Option option = value.getOrCreateOption("TAB_SIZE");
+            option.setIntegerValue(indentation.getTabSize());
         }
         if (indentation.getIndentSize() != null) {
-            Option useTabCharacter = value.getOrCreateOption("INDENT_SIZE");
-            useTabCharacter.setIntegerValue(indentation.getIndentSize());
+            Option option = value.getOrCreateOption("INDENT_SIZE");
+            option.setIntegerValue(indentation.getIndentSize());
         }
         if (indentation.getContinuationIndentSize() != null) {
-            Option useTabCharacter = value.getOrCreateOption("CONTINUATION_INDENT_SIZE");
-            useTabCharacter.setIntegerValue(indentation.getContinuationIndentSize());
+            Option option = value.getOrCreateOption("CONTINUATION_INDENT_SIZE");
+            option.setIntegerValue(indentation.getContinuationIndentSize());
+        }
+        if (indentation.getLabelIndentAbsolute() != null) {
+            Option option = value.getOrCreateOption("LABEL_INDENT_ABSOLUTE");
+            option.setBooleanValue(indentation.getLabelIndentAbsolute());
         }
     }
 }

@@ -10,6 +10,7 @@ import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class IntellijIndentationReaderTest {
@@ -119,5 +120,17 @@ public class IntellijIndentationReaderTest {
         // THEN
         Indentation indentation = style.getIndentation();
         assertEquals(4, (int) indentation.getContinuationIndentSize());
+    }
+
+    @Test
+    public void toIndentation_with_a_LABEL_INDENT_ABSOLUTE_sets_the_LabelIndentAbsolute() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentAbsolute");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertTrue(indentation.getLabelIndentAbsolute());
     }
 }

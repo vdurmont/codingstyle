@@ -101,4 +101,20 @@ public class IntellijIndentationWriterTest {
         int indentSize = indentOptions.getOption("CONTINUATION_INDENT_SIZE").getIntegerValue();
         assertEquals(4, indentSize);
     }
+
+    @Test
+    public void write_with_LabelIndentAbsolute_sets_the_LABEL_INDENT_ABSOLUTE() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setLabelIndentAbsolute(true);
+
+
+        // WHEN
+        IntellijIndentationWriter.write(scheme, indentation);
+
+        // THEN
+        Value indentOptions = this.scheme.getOption("OTHER_INDENT_OPTIONS").getValueTag();
+        boolean indentAbsolute = indentOptions.getOption("LABEL_INDENT_ABSOLUTE").getBooleanValue();
+        assertTrue(indentAbsolute);
+    }
 }
