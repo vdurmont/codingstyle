@@ -3,6 +3,7 @@ package com.vdurmont.codestyle.intellij.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ public abstract class OptionsHolder {
             this.optionsByName = new HashMap<>();
             if (this.options != null) {
                 this.options.forEach(o -> this.optionsByName.put(o.getName().toLowerCase(), o));
+            } else {
+                this.options = new ArrayList<>();
             }
         }
         return this.optionsByName.get(optionName.toLowerCase());
@@ -45,5 +48,16 @@ public abstract class OptionsHolder {
             return null;
         }
         return option.getIntegerValue();
+    }
+
+    public Option getOrCreateOption(String optionName) {
+        Option option = this.getOption(optionName);
+        if (option == null) {
+            option = new Option();
+            option.setName(optionName);
+            this.options.add(option);
+            this.optionsByName.put(optionName.toLowerCase(), option);
+        }
+        return option;
     }
 }

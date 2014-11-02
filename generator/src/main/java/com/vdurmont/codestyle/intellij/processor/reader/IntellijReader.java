@@ -14,7 +14,7 @@ public class IntellijReader implements Reader<CodeScheme> {
         LOGGER.trace("Converting " + scheme + " to CodeStyle");
         CodeStyle style = new CodeStyle();
         style.setProjectName(scheme.getName());
-        Indentation indentation = IntellijReaderIndentation.toIndentation(scheme);
+        Indentation indentation = IntellijIndentationReader.toIndentation(scheme);
         style.setIndentation(indentation);
         return style;
     }

@@ -9,6 +9,9 @@ public class IntellijWriter implements Writer<CodeScheme> {
     public CodeScheme write(CodeStyle codeStyle) {
         CodeScheme scheme = new CodeScheme();
         scheme.setName(codeStyle.getProjectName());
+        if (codeStyle.getIndentation() != null) {
+            IntellijIndentationWriter.write(scheme, codeStyle.getIndentation());
+        }
         return scheme;
     }
 }

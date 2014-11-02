@@ -7,7 +7,7 @@ import com.vdurmont.codestyle.intellij.model.CodeStyleSetting;
 import com.vdurmont.codestyle.intellij.model.Option;
 import com.vdurmont.codestyle.intellij.model.Value;
 
-public class IntellijReaderIndentation {
+public class IntellijIndentationReader {
     public static Indentation toIndentation(CodeScheme scheme) {
         Indentation indentation = new Indentation();
         Option otherIndentOptions = scheme.getOption("OTHER_INDENT_OPTIONS");

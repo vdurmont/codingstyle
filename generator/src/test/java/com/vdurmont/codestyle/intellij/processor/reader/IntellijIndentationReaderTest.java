@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(JUnit4.class)
-public class IntellijReaderIndentationTest {
+public class IntellijIndentationReaderTest {
     @Test
     public void toIndentation_with_no_character_sets_the_IndentCharacter_to_null() {
         // GIVEN

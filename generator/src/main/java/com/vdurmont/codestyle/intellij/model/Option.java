@@ -39,11 +39,19 @@ public class Option {
         return Boolean.valueOf(stringValue);
     }
 
+    public void setBooleanValue(Boolean booleanValue) {
+        this.stringValue = booleanValue.toString();
+    }
+
     public Integer getIntegerValue() {
         if (stringValue == null) {
             return null;
         }
         return Integer.valueOf(stringValue);
+    }
+
+    public void setIntegerValue(Integer integerValue) {
+        this.stringValue = integerValue.toString();
     }
 
     public Value getValueTag() {
@@ -60,5 +68,14 @@ public class Option {
                 ", stringValue='" + stringValue + '\'' +
                 ", valueTag=" + valueTag +
                 '}';
+    }
+
+    public Value getOrCreateValueTag() {
+        Value value = this.getValueTag();
+        if (value == null) {
+            value = new Value();
+            this.setValueTag(value);
+        }
+        return value;
     }
 }
