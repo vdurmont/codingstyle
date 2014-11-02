@@ -24,7 +24,9 @@ public abstract class OptionsHolder {
     public Option getOption(String optionName) {
         if (this.optionsByName == null) {
             this.optionsByName = new HashMap<>();
-            this.options.forEach(o -> this.optionsByName.put(o.getName().toLowerCase(), o));
+            if (this.options != null) {
+                this.options.forEach(o -> this.optionsByName.put(o.getName().toLowerCase(), o));
+            }
         }
         return this.optionsByName.get(optionName.toLowerCase());
     }
