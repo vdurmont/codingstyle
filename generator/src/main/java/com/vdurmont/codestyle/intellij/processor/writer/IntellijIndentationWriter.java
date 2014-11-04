@@ -34,5 +34,9 @@ public class IntellijIndentationWriter {
             Option option = value.getOrCreateOption("LABEL_INDENT_SIZE");
             option.setValue(indentation.getLabelIndentSize());
         }
+        if (indentation.getSmartTabs() != null) {
+            Option option = value.getOrCreateOption("SMART_TABS");
+            option.setValue(indentation.getSmartTabs());
+        }
     }
 }

@@ -145,4 +145,16 @@ public class IntellijIndentationReaderTest {
         Indentation indentation = style.getIndentation();
         assertEquals(4, (int) indentation.getLabelIndentSize());
     }
+
+    @Test
+    public void toIndentation_with_a_SMART_TABS_sets_the_SmartTabs() {
+        // GIVEN
+
+        // WHEN
+        CodeStyle style = IntellijTestUtils.readCodeStyle("ConfigWithSmartTabs");
+
+        // THEN
+        Indentation indentation = style.getIndentation();
+        assertTrue(indentation.getSmartTabs());
+    }
 }

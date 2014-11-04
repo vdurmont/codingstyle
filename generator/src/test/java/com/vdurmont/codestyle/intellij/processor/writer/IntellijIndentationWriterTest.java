@@ -133,4 +133,20 @@ public class IntellijIndentationWriterTest {
         int size = indentOptions.getOption("LABEL_INDENT_SIZE").getIntegerValue();
         assertEquals(4, size);
     }
+
+    @Test
+    public void write_with_SmartTabs_sets_the_SMART_TABS() {
+        // GIVEN
+        Indentation indentation = new Indentation();
+        indentation.setSmartTabs(true);
+
+
+        // WHEN
+        IntellijIndentationWriter.write(scheme, indentation);
+
+        // THEN
+        Value indentOptions = this.scheme.getOption("OTHER_INDENT_OPTIONS").getValueTag();
+        boolean smartTabs = indentOptions.getOption("SMART_TABS").getBooleanValue();
+        assertTrue(smartTabs);
+    }
 }
