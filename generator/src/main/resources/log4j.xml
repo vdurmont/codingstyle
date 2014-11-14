@@ -9,7 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="com.vdurmont.codestyle">
+    <logger name="org.codingstyle">
         <level value="trace"/>
     </logger>
 
