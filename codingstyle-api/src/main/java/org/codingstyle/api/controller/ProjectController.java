@@ -33,7 +33,7 @@ public class ProjectController {
     @RequestMapping(value = "{externId}", method = RequestMethod.GET)
     @ResponseBody
     public ProjectDTO get(@PathVariable String externId) {
-        LOGGER.trace("Getting project with externId=" + externId);
+        LOGGER.trace("Getting project with externId='" + externId + "'");
         Project project = this.projectService.getByExternId(externId);
         return this.projectMapper.generate(project);
     }

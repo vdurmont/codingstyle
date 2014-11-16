@@ -1,0 +1,22 @@
+<loader is-active="project == null"></loader>
+<div ng-hide="project == null">
+    <h1>{{ project.name }}</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="project-download-item">
+                Download JSON representation
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-download-item">
+                Download IntelliJ config
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-download-item">
+                Download CheckStyle config
+            </div>
+        </div>
+    </div>
+</div>

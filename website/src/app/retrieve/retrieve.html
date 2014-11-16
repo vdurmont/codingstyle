@@ -1,0 +1,14 @@
+<h1>Retrieve a project</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 centered">
+        <form role="form">
+            <div class="form-group">
+                <label for="project-id">Enter your project id:</label>
+                <input type="text" class="form-control" id="project-id" ng-model="projectId">
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="retrieveProject()" ng-disabled="projectId == null">
+                Retrieve my project
+            </button>
+        </form>
+    </div>
+</div>
