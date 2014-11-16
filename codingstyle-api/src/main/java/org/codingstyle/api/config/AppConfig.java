@@ -12,7 +12,11 @@ import javax.annotation.PostConstruct;
 @Configuration
 @EnableAspectJAutoProxy
 @Import(DatabaseConfig.class)
-@ComponentScan(basePackages = {"org.codingstyle.api.service", "org.codingstyle.api.service"})
+@ComponentScan(basePackages = {
+        "org.codingstyle.api.service",
+        "org.codingstyle.api.mapper",
+        "org.codingstyle.api.exception"
+})
 public class AppConfig {
     private static final Logger LOGGER = Logger.getLogger(AppConfig.class);
 

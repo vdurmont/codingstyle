@@ -11,7 +11,7 @@ import javax.persistence.Transient;
  * Each config is gonna be converted to this one before being converted to another config.
  */
 @javax.persistence.Entity
-@Table(name = "cs_style")
+@Table(name = "cs_project")
 public class Project extends Entity {
     @NotEmpty
     @Column(name = "extern_id", nullable = false, unique = true, length = 32)
