@@ -1,25 +1,46 @@
 package org.codingstyle.core.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 /**
  * This is the main object representing a coding style.
  * Each config is gonna be converted to this one before being converted to another config.
  */
-public class Style {
-    private String projectName;
-    private Indentation indentation;
-    private Annotations annotations;
-    private Page page;
-    private Spaces spaces;
-    private Braces braces;
-    private Imports imports;
-    private Documentation documentation;
+@javax.persistence.Entity
+@Table(name = "cs_style")
+public class Project extends Entity {
+    @NotEmpty
+    @Column(name = "extern_id", nullable = false, unique = true, length = 32)
+    private String externId;
+    @NotEmpty
+    @Column(name = "name", nullable = false, length = 128)
+    private String name;
+    @Transient private Indentation indentation;
+    @Transient private Annotations annotations;
+    @Transient private Page page;
+    @Transient private Spaces spaces;
+    @Transient private Braces braces;
+    @Transient private Imports imports;
+    @Transient private Documentation documentation;
 
-    public String getProjectName() {
-        return projectName;
+    public String getExternId() {
+        return externId;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setExternId(String externId) {
+        this.externId = externId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Indentation getIndentation() {

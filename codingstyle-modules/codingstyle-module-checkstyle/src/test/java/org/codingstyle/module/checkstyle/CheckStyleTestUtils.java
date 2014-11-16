@@ -8,7 +8,7 @@ import org.codingstyle.core.model.Imports;
 import org.codingstyle.core.model.Indentation;
 import org.codingstyle.core.model.Page;
 import org.codingstyle.core.model.Spaces;
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.codingstyle.module.checkstyle.model.Checkstyle;
 import org.codingstyle.module.checkstyle.processor.CheckstyleConfigProcessor;
 import org.codingstyle.module.checkstyle.processor.CheckstyleWriter;
@@ -24,23 +24,23 @@ import static org.junit.Assert.assertTrue;
 public class CheckStyleTestUtils {
     public static boolean displayGeneratedCheckstyle = true;
 
-    public static void assertNoCheckstyleErrors(Style style, String testFilePath) {
-        assertNumCheckstyleErrors(0, style, testFilePath);
+    public static void assertNoCheckstyleErrors(Project project, String testFilePath) {
+        assertNumCheckstyleErrors(0, project, testFilePath);
     }
 
-    public static void assertHasCheckstyleErrors(Style style, String testFilePath) {
-        int numErrors = getNumCheckstyleErrors(style, testFilePath);
+    public static void assertHasCheckstyleErrors(Project project, String testFilePath) {
+        int numErrors = getNumCheckstyleErrors(project, testFilePath);
         assertTrue(0 < numErrors);
     }
 
-    public static void assertNumCheckstyleErrors(int expectedNumErrors, Style style, String testFilePath) {
-        int numErrors = getNumCheckstyleErrors(style, testFilePath);
+    public static void assertNumCheckstyleErrors(int expectedNumErrors, Project project, String testFilePath) {
+        int numErrors = getNumCheckstyleErrors(project, testFilePath);
         assertEquals(expectedNumErrors, numErrors);
     }
 
-    private static int getNumCheckstyleErrors(Style style, String testFilePath) {
+    private static int getNumCheckstyleErrors(Project project, String testFilePath) {
         CheckstyleWriter writer = new CheckstyleWriter();
-        Checkstyle checkstyle = writer.write(style);
+        Checkstyle checkstyle = writer.write(project);
 
         CheckstyleConfigProcessor processor = new CheckstyleConfigProcessor();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -65,16 +65,16 @@ public class CheckStyleTestUtils {
     }
 
     // TODO maybe the writers should handle null properties
-    public static Style generateStyle() {
-        Style style = new Style();
-        style.setProjectName("My project");
-        style.setIndentation(new Indentation());
-        style.setAnnotations(new Annotations());
-        style.setBraces(new Braces());
-        style.setDocumentation(new Documentation());
-        style.setPage(new Page());
-        style.setImports(new Imports());
-        style.setSpaces(new Spaces());
-        return style;
+    public static Project generateStyle() {
+        Project project = new Project();
+        project.setName("My project");
+        project.setIndentation(new Indentation());
+        project.setAnnotations(new Annotations());
+        project.setBraces(new Braces());
+        project.setDocumentation(new Documentation());
+        project.setPage(new Page());
+        project.setImports(new Imports());
+        project.setSpaces(new Spaces());
+        return project;
     }
 }

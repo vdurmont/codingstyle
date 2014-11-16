@@ -1,6 +1,6 @@
 package org.codingstyle.module.intellij.reader;
 
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.codingstyle.core.model.IndentCharacter;
 import org.codingstyle.core.model.Indentation;
 import org.codingstyle.module.intellij.IntellijTestUtils;
@@ -19,10 +19,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+        Project project = IntellijTestUtils.readCodeStyle("EmptyConfig");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertNull(indentation.getIndentCharacter());
     }
 
@@ -31,10 +31,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithTabCharacter");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithTabCharacter");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(IndentCharacter.TAB, indentation.getIndentCharacter());
     }
 
@@ -43,10 +43,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithSpaceCharacter");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithSpaceCharacter");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(IndentCharacter.SPACE, indentation.getIndentCharacter());
     }
 
@@ -55,10 +55,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+        Project project = IntellijTestUtils.readCodeStyle("EmptyConfig");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertNull(indentation.getTabSize());
     }
 
@@ -67,10 +67,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithTabSize");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithTabSize");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(2, (int) indentation.getTabSize());
     }
 
@@ -79,10 +79,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+        Project project = IntellijTestUtils.readCodeStyle("EmptyConfig");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertNull(indentation.getIndentSize());
     }
 
@@ -91,10 +91,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithIndentSize");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithIndentSize");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(2, (int) indentation.getIndentSize());
     }
 
@@ -103,10 +103,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("EmptyConfig");
+        Project project = IntellijTestUtils.readCodeStyle("EmptyConfig");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertNull(indentation.getContinuationIndentSize());
     }
 
@@ -115,10 +115,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithContinuationIndentSize");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithContinuationIndentSize");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(4, (int) indentation.getContinuationIndentSize());
     }
 
@@ -127,10 +127,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentAbsolute");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentAbsolute");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertTrue(indentation.getLabelIndentAbsolute());
     }
 
@@ -139,10 +139,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentSize");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithLabelIndentSize");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertEquals(4, (int) indentation.getLabelIndentSize());
     }
 
@@ -151,10 +151,10 @@ public class IntellijIndentationReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithSmartTabs");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithSmartTabs");
 
         // THEN
-        Indentation indentation = style.getIndentation();
+        Indentation indentation = project.getIndentation();
         assertTrue(indentation.getSmartTabs());
     }
 }

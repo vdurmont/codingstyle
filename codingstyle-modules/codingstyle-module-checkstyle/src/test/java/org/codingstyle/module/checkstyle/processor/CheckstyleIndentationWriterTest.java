@@ -2,7 +2,7 @@ package org.codingstyle.module.checkstyle.processor;
 
 import org.codingstyle.core.model.IndentCharacter;
 import org.codingstyle.core.model.Indentation;
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +15,11 @@ import static org.codingstyle.module.checkstyle.CheckStyleTestUtils.generateStyl
 
 @RunWith(JUnit4.class)
 public class CheckstyleIndentationWriterTest {
-    private Style style;
+    private Project project;
 
     @Before
     public void setUp() {
-        this.style = generateStyle();
+        this.project = generateStyle();
     }
 
     @Test
@@ -27,10 +27,10 @@ public class CheckstyleIndentationWriterTest {
         // GIVEN
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.SPACE);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertNumCheckstyleErrors(1, this.style, "FileWithTabs");
+        assertNumCheckstyleErrors(1, this.project, "FileWithTabs");
     }
 
     @Test
@@ -38,10 +38,10 @@ public class CheckstyleIndentationWriterTest {
         // GIVEN
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.SPACE);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithSpaces");
+        assertNoCheckstyleErrors(this.project, "FileWithSpaces");
     }
 
     @Test
@@ -49,10 +49,10 @@ public class CheckstyleIndentationWriterTest {
         // GIVEN
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.TAB);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertHasCheckstyleErrors(this.style, "FileWithSpaces");
+        assertHasCheckstyleErrors(this.project, "FileWithSpaces");
     }
 
     @Test
@@ -60,10 +60,10 @@ public class CheckstyleIndentationWriterTest {
         // GIVEN
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.TAB);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithTabs");
+        assertNoCheckstyleErrors(this.project, "FileWithTabs");
     }
 
     @Test
@@ -72,10 +72,10 @@ public class CheckstyleIndentationWriterTest {
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.SPACE);
         indentation.setIndentSize(2);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWith2Spaces");
+        assertNoCheckstyleErrors(this.project, "FileWith2Spaces");
     }
 
     @Test
@@ -84,9 +84,9 @@ public class CheckstyleIndentationWriterTest {
         Indentation indentation = new Indentation();
         indentation.setIndentCharacter(IndentCharacter.SPACE);
         indentation.setIndentSize(2);
-        this.style.setIndentation(indentation);
+        this.project.setIndentation(indentation);
 
         // THEN
-        assertHasCheckstyleErrors(this.style, "FileWithSpaces");
+        assertHasCheckstyleErrors(this.project, "FileWithSpaces");
     }
 }

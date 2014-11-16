@@ -1,7 +1,7 @@
 package org.codingstyle.core.processor;
 
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 
 public interface Writer<T> {
-    T write(Style style);
+    T write(Project project);
 }

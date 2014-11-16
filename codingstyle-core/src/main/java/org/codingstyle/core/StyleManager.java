@@ -2,7 +2,7 @@ package org.codingstyle.core;
 
 import org.apache.log4j.Logger;
 import org.codingstyle.core.exception.CodingStyleException;
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,8 +46,8 @@ public class StyleManager {
         Module<T> inputModule = this.getModule(inputClass);
         Module<K> outputModule = this.getModule(outputClass);
         T input = inputModule.getConfigProcessor().readFromStream(inputStream);
-        Style style = inputModule.getReader().read(input);
-        K output = outputModule.getWriter().write(style);
+        Project project = inputModule.getReader().read(input);
+        K output = outputModule.getWriter().write(project);
         outputModule.getConfigProcessor().writeToStream(output, outputStream);
     }
 

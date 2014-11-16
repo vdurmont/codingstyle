@@ -1,6 +1,6 @@
 package org.codingstyle.module.intellij;
 
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.codingstyle.module.intellij.model.CodeScheme;
 import org.codingstyle.module.intellij.processor.IntellijConfigProcessor;
 import org.codingstyle.module.intellij.processor.reader.IntellijReader;
@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class IntellijTestUtils {
-    public static Style readCodeStyle(String testFileName) {
+    public static Project readCodeStyle(String testFileName) {
         try {
             IntellijConfigProcessor processor = new IntellijConfigProcessor();
             File testFile = new File("src/test/resources/" + testFileName + ".xml");

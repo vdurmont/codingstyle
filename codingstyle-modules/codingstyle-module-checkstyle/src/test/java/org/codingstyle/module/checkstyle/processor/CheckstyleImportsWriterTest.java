@@ -1,7 +1,7 @@
 package org.codingstyle.module.checkstyle.processor;
 
 import org.codingstyle.core.model.Imports;
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +13,11 @@ import static org.codingstyle.module.checkstyle.CheckStyleTestUtils.generateStyl
 
 @RunWith(JUnit4.class)
 public class CheckstyleImportsWriterTest {
-    private Style style;
+    private Project project;
 
     @Before
     public void setUp() {
-        this.style = generateStyle();
+        this.project = generateStyle();
     }
 
     @Test
@@ -25,11 +25,11 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidStarImport(true);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutStarImports");
-        assertNumCheckstyleErrors(1, this.style, "FileWithStarImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutStarImports");
+        assertNumCheckstyleErrors(1, this.project, "FileWithStarImports");
     }
 
     @Test
@@ -37,22 +37,22 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidStarImport(false);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutStarImports");
-        assertNoCheckstyleErrors(this.style, "FileWithStarImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutStarImports");
+        assertNoCheckstyleErrors(this.project, "FileWithStarImports");
     }
 
     @Test
     public void buildCheckstyle_with_AvoidStarImports_undefined() {
         // GIVEN
         Imports imports = new Imports();
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutStarImports");
-        assertNoCheckstyleErrors(this.style, "FileWithStarImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutStarImports");
+        assertNoCheckstyleErrors(this.project, "FileWithStarImports");
     }
 
     @Test
@@ -60,11 +60,11 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidUnusedImports(true);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutUnusedImports");
-        assertNumCheckstyleErrors(1, this.style, "FileWithUnusedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutUnusedImports");
+        assertNumCheckstyleErrors(1, this.project, "FileWithUnusedImports");
     }
 
     @Test
@@ -72,22 +72,22 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidUnusedImports(false);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutUnusedImports");
-        assertNoCheckstyleErrors(this.style, "FileWithUnusedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutUnusedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithUnusedImports");
     }
 
     @Test
     public void buildCheckstyle_with_AvoidUnusedImports_undefined() {
         // GIVEN
         Imports imports = new Imports();
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutUnusedImports");
-        assertNoCheckstyleErrors(this.style, "FileWithUnusedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutUnusedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithUnusedImports");
     }
 
     @Test
@@ -95,12 +95,12 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidRedundantImports(true);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutRedundantImports");
-        assertNumCheckstyleErrors(1, this.style, "FileWithRedundantJavaLangImports");
-        assertNumCheckstyleErrors(1, this.style, "FileWithRedundantRepeatedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutRedundantImports");
+        assertNumCheckstyleErrors(1, this.project, "FileWithRedundantJavaLangImports");
+        assertNumCheckstyleErrors(1, this.project, "FileWithRedundantRepeatedImports");
     }
 
     @Test
@@ -108,11 +108,11 @@ public class CheckstyleImportsWriterTest {
         // GIVEN
         Imports imports = new Imports();
         imports.setAvoidRedundantImports(false);
-        this.style.setImports(imports);
+        this.project.setImports(imports);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithoutRedundantImports");
-        assertNoCheckstyleErrors(this.style, "FileWithRedundantJavaLangImports");
-        assertNoCheckstyleErrors(this.style, "FileWithRedundantRepeatedImports");
+        assertNoCheckstyleErrors(this.project, "FileWithoutRedundantImports");
+        assertNoCheckstyleErrors(this.project, "FileWithRedundantJavaLangImports");
+        assertNoCheckstyleErrors(this.project, "FileWithRedundantRepeatedImports");
     }
 }

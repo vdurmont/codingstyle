@@ -1,7 +1,7 @@
 package org.codingstyle.module.checkstyle.processor;
 
 import org.codingstyle.core.model.Annotations;
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +14,11 @@ import static org.codingstyle.module.checkstyle.CheckStyleTestUtils.generateStyl
 
 @RunWith(JUnit4.class)
 public class CheckstyleAnnotationsWriterTest {
-    private Style style;
+    private Project project;
 
     @Before
     public void setUp() {
-        this.style = generateStyle();
+        this.project = generateStyle();
     }
 
     @Test
@@ -26,11 +26,11 @@ public class CheckstyleAnnotationsWriterTest {
         // GIVEN
         Annotations annotations = new Annotations();
         annotations.setForceOverride(true);
-        this.style.setAnnotations(annotations);
+        this.project.setAnnotations(annotations);
 
         // THEN
-        assertNumCheckstyleErrors(1, this.style, "FileWithMissingOverride");
-        assertNoCheckstyleErrors(this.style, "FileWithNoMissingOverride");
+        assertNumCheckstyleErrors(1, this.project, "FileWithMissingOverride");
+        assertNoCheckstyleErrors(this.project, "FileWithNoMissingOverride");
     }
 
     @Test
@@ -38,10 +38,10 @@ public class CheckstyleAnnotationsWriterTest {
         // GIVEN
         Annotations annotations = new Annotations();
         annotations.setForceOverride(false);
-        this.style.setAnnotations(annotations);
+        this.project.setAnnotations(annotations);
 
         // THEN
-        assertNoCheckstyleErrors(this.style, "FileWithMissingOverride");
-        assertNoCheckstyleErrors(this.style, "FileWithNoMissingOverride");
+        assertNoCheckstyleErrors(this.project, "FileWithMissingOverride");
+        assertNoCheckstyleErrors(this.project, "FileWithNoMissingOverride");
     }
 }

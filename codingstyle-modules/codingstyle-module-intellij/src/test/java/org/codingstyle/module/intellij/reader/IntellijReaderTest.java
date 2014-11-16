@@ -1,6 +1,6 @@
 package org.codingstyle.module.intellij.reader;
 
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.codingstyle.module.intellij.IntellijTestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +16,10 @@ public class IntellijReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithoutName");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithoutName");
 
         // THEN
-        assertNull(style.getProjectName());
+        assertNull(project.getName());
     }
 
     @Test
@@ -27,9 +27,9 @@ public class IntellijReaderTest {
         // GIVEN
 
         // WHEN
-        Style style = IntellijTestUtils.readCodeStyle("ConfigWithName");
+        Project project = IntellijTestUtils.readCodeStyle("ConfigWithName");
 
         // THEN
-        assertEquals("MyProject", style.getProjectName());
+        assertEquals("MyProject", project.getName());
     }
 }

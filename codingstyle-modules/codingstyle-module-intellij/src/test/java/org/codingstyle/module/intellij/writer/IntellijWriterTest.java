@@ -1,6 +1,6 @@
 package org.codingstyle.module.intellij.writer;
 
-import org.codingstyle.core.model.Style;
+import org.codingstyle.core.model.Project;
 import org.codingstyle.module.intellij.model.CodeScheme;
 import org.codingstyle.module.intellij.processor.writer.IntellijWriter;
 import org.junit.Test;
@@ -15,10 +15,10 @@ public class IntellijWriterTest {
     @Test
     public void write_with_no_name_doesnt_set_a_name() {
         // GIVEN
-        Style style = new Style();
+        Project project = new Project();
 
         // WHEN
-        CodeScheme scheme = new IntellijWriter().write(style);
+        CodeScheme scheme = new IntellijWriter().write(project);
 
         // THEN
         assertNull(scheme.getName());
@@ -29,11 +29,11 @@ public class IntellijWriterTest {
         // GIVEN
         String projectName = "My project";
 
-        Style style = new Style();
-        style.setProjectName(projectName);
+        Project project = new Project();
+        project.setName(projectName);
 
         // WHEN
-        CodeScheme scheme = new IntellijWriter().write(style);
+        CodeScheme scheme = new IntellijWriter().write(project);
 
         // THEN
         assertEquals(projectName, scheme.getName());
