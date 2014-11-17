@@ -37,4 +37,13 @@ public class ProjectController {
         Project project = this.projectService.getByExternId(externId);
         return this.projectMapper.generate(project);
     }
+
+    @RequestMapping(value = "{externId}", method = RequestMethod.PUT)
+    @ResponseBody
+    public ProjectDTO put(@PathVariable String externId, @RequestBody ProjectDTO dto) {
+        LOGGER.trace("Updating project with externId='" + externId + "'");
+        Project project = this.projectService.getByExternId(externId);
+        project = this.projectService.edit(project, dto.getName());
+        return this.projectMapper.generate(project);
+    }
 }

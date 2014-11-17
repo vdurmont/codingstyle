@@ -1,8 +1,8 @@
 package org.codingstyle.api.service;
 
-import org.codingstyle.api.test.TestAbstract;
 import org.codingstyle.api.exception.IllegalInputException;
 import org.codingstyle.api.exception.ResourceNotFoundException;
+import org.codingstyle.api.test.TestAbstract;
 import org.codingstyle.core.model.Project;
 import org.joda.time.DateTime;
 import org.junit.Test;
@@ -89,5 +89,19 @@ public class ProjectServiceTest extends TestAbstract {
 
         // THEN
         assertSameEntities(project, result);
+    }
+
+    @Test
+    public void edit_changes_the_name() {
+        // GIVEN
+        Project project = this.generator.project();
+        String name = "New name!";
+
+        // WHEN
+        Project result = this.projectService.edit(project, name);
+
+        // THEN
+        assertSameEntities(project, result);
+        assertEquals(name, result.getName());
     }
 }

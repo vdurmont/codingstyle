@@ -51,4 +51,14 @@ public class ProjectService {
         }
         return project;
     }
+
+    public Project edit(Project project, String name) {
+        checkNotNull("Missing project", project);
+        checkNotNull("Missing project name", name);
+        checkNotEmpty("Invalid project name: must not be empty", name);
+        checkMaxLength("Invalid project name: must be shorter than 128 characters", 128, name);
+
+        project.setName(name);
+        return this.projectRepository.save(project);
+    }
 }
