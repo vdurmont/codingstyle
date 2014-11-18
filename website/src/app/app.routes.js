@@ -14,6 +14,9 @@ app.config(
             }).when("/projects/:projectId", {
                 templateUrl: "/project/project.html",
                 controller: "ProjectController"
+            }).when("/projects/:projectId/:section", {
+                templateUrl: "/project/project.html",
+                controller: "ProjectController"
             }).otherwise({ templateUrl: "/404/404.html" });
     }
 );

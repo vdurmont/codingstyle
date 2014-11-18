@@ -1,0 +1,16 @@
+<div ng-controller="ProjectSettingsController">
+    <form role="form">
+        <div class="form-group"
+             ng-class="{'has-error': !isNameValid()}">
+            <label class="control-label" for="project-settings-name">Project name</label>
+            <input type="text"
+                   class="form-control"
+                   id="project-settings-name"
+                   placeholder="The name of your project"
+                   ng-model="project.name">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="saveSettings()" ng-disabled="!isDirty()">Save</button>
+        </div>
+    </form>
+</div>

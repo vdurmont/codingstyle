@@ -1,22 +1,44 @@
 <loader is-active="project == null"></loader>
 <div ng-hide="project == null">
-    <h1>{{ project.name }}</h1>
+    <div class="project-header">
+        <h1 class="inline">{{ project.name }}</h1>
+
+        <div class="progress-header">
+            <div>Your progress:</div>
+            <div class="progress">
+                <div class="progress-bar"
+                     role="progressbar"
+                     aria-valuenow="{{ project.progress.percentage }}"
+                     aria-valuemin="0" aria-valuemax="100"
+                     ng-style="{'width': project.progress.percentage + '%'}">
+                    <span>{{ project.progress.percentage }}% Complete</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="project-download-item">
-                Download JSON representation
+        <div class="col-md-3">
+            <div class="project-menu">
+                <ul>
+                    <li ng-repeat="section in sections">
+                        <a href="/projects/{{ project.id }}/{{ section.url }}"
+                           ng-class="{selected: currentSection.url == section.url}"
+                           ng-if="currentSection.url != section.url">
+                            {{ section.title }}
+                        </a>
+                        <span ng-class="{selected: currentSection.url == section.url}"
+                              ng-if="currentSection.url == section.url">
+                            {{ section.title }}
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="project-download-item">
-                Download IntelliJ config
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="project-download-item">
-                Download CheckStyle config
-            </div>
+        <div class="col-md-9">
+            <h2>{{ currentSection.title }}</h2>
+
+            <div ng-include="currentSection.templateUrl"></div>
         </div>
     </div>
 </div>

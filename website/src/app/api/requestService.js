@@ -29,10 +29,10 @@ angular.module("codingStyleApp").factory("RequestService",
                 });
                 return deferred.promise;
             },
-            put: function(url, params) {
+            put: function(url, params, body) {
                 var p = buildParams(params);
                 var deferred = $q.defer();
-                $http.put(apiUrl + url, null, p).success(function(data, status, headers) {
+                $http.put(apiUrl + url, body, p).success(function(data, status, headers) {
                     deferred.resolve(data);
                 }).error(function(err, status) {
                     deferred.reject(err);

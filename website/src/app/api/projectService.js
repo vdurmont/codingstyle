@@ -3,6 +3,9 @@ angular.module("codingStyleApp").factory("ProjectService",
         return {
             get: function(id) {
                 return RequestService.get("projects/" + id);
+            },
+            editProject: function(project) {
+                return RequestService.put("projects/" + project.id, null, project);
             }
         };
     }

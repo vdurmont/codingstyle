@@ -4,3 +4,47 @@
   .rounded(10px);
   background-color: @light-grey;
 }
+
+.project-header {
+  margin-bottom: 50px;
+
+  .progress-header {
+    float: right;
+    width: 30%;
+    font-size: .7em;
+    text-align: right;
+    margin-bottom: 0;
+  }
+
+  .progress-bar {
+    background-color: @dark-blue;
+  }
+}
+
+.project-menu {
+  margin-right: 30px;
+  padding: 10px;
+  background-color: @light-grey;
+  .rounded(10px);
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+
+    .selected {
+      color: @text-color;
+    }
+  }
+}
+
+.form-control-feedback.ok {
+  color: green;
+}
+
+.form-control-feedback.loading {
+  color: @text-color;
+}
