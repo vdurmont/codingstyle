@@ -9,6 +9,12 @@ public class Preconditions {
         }
     }
 
+    public static void checkNull(String message, Object obj) {
+        if (obj != null) {
+            throw new IllegalInputException(message);
+        }
+    }
+
     public static void checkNotEmpty(String message, String string) {
         checkNotNull(message, string);
         if (string.isEmpty()) {
