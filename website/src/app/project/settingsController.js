@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("codingStyleApp").controller("ProjectSettingsController",
+angular.module("codingStyleApp").controller("SettingsController",
     function($scope, ProjectService) {
         $scope.isNameValid = function() {
             return $scope.project != null

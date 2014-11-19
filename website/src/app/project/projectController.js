@@ -6,8 +6,9 @@ angular.module("codingStyleApp").controller("ProjectController",
         var section = $routeParams.section;
 
         $scope.sections = [
-            { url: "settings", title: "General Settings", templateUrl: "project/settings/settings.html" },
-            { url: "downloads", title: "Downloads", templateUrl: "project/downloads/downloads.html" }
+            { url: "settings", title: "General Settings", templateUrl: "project/settings.html" },
+            { url: "indentation", title: "Indentation", templateUrl: "project/indentation.html" },
+            { url: "downloads", title: "Downloads", templateUrl: "project/downloads.html" }
         ];
 
         $scope.defineProject = function(data) {

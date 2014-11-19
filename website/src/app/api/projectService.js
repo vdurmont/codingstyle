@@ -6,6 +6,9 @@ angular.module("codingStyleApp").factory("ProjectService",
             },
             editProject: function(project) {
                 return RequestService.put("projects/" + project.id, null, project);
+            },
+            editIndentation: function(projectId, indentation) {
+                return RequestService.put("projects/" + projectId + "/indentation", null, indentation);
             }
         };
     }
