@@ -1,12 +1,51 @@
 <div ng-controller="IndentationController">
     <form role="form">
         <div class="form-group">
+            <label class="control-label">Indent Character:</label>
+
+            <div class="radio inline">
+                <label>
+                    <input type="radio" value="SPACE"
+                           ng-model="project.indentation.indent_character">
+                    Space
+                </label>
+            </div>
+            <div class="radio inline">
+                <label>
+                    <input type="radio" value="TAB"
+                           ng-model="project.indentation.indent_character">
+                    Tab
+                </label>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-class="{'has-error': isInvalidNumber(project.indentation.tab_size) }"
+             ng-show="project.indentation.indent_character == 'TAB'">
+            <label class="control-label"
+                   for="project-indentation-tab-size">Tab Size</label>
+            <input type="text"
+                   class="form-control"
+                   id="project-indentation-tab-size"
+                   placeholder="Tab size (in number of spaces)"
+                   ng-model="project.indentation.tab_size">
+        </div>
+        <div class="form-group" ng-class="{'has-error': isInvalidNumber(project.indentation.indent_size) }">
             <label class="control-label" for="project-indentation-indent-size">Indent Size</label>
-            <input type="number"
+            <input type="text"
                    class="form-control"
                    id="project-indentation-indent-size"
                    placeholder="Indent size (in number of spaces)"
                    ng-model="project.indentation.indent_size">
+        </div>
+        <div class="form-group"
+             ng-class="{'has-error': isInvalidNumber(project.indentation.continuation_indent_size) }">
+            <label class="control-label"
+                   for="project-indentation-continuation-indent-size">Continuation Indent Size</label>
+            <input type="text"
+                   class="form-control"
+                   id="project-indentation-continuation-indent-size"
+                   placeholder="Continuation indent size (in number of spaces)"
+                   ng-model="project.indentation.continuation_indent_size">
         </div>
         <div class="form-group">
             <button class="btn btn-primary" ng-click="saveIndentation()" ng-disabled="!isDirty()">Save</button>

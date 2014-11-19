@@ -11,8 +11,12 @@ angular.module("codingStyleApp").controller("ProjectController",
             { url: "downloads", title: "Downloads", templateUrl: "project/downloads.html" }
         ];
 
-        $scope.defineProject = function(data) {
-            $scope.project = data;
+        $scope.defineProject = function(data, key) {
+            if (key == null) {
+                $scope.project = data;
+            } else {
+                $scope.project[key] = data;
+            }
             // TODO get that from the API
             $scope.project.progress = { percentage: 60 };
             $scope.initalProject = JSON.stringify($scope.project);
@@ -51,4 +55,11 @@ angular.module("codingStyleApp").controller("ProjectController",
                 }
             }
         });
+
+        $scope.isInvalidNumber = function(number) {
+            if (number == null) {
+                return false; // Null is allowed..
+            }
+            return isNaN(number);
+        }
     });

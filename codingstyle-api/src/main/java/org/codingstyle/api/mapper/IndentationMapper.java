@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 public class IndentationMapper {
     public IndentationDTO generate(Indentation indentation) {
         IndentationDTO dto = new IndentationDTO();
+        dto.setIndentCharacter(indentation.getIndentCharacter());
+        dto.setTabSize(indentation.getTabSize());
         dto.setIndentSize(indentation.getIndentSize());
+        dto.setContinuationIndentSize(indentation.getContinuationIndentSize());
         return dto;
     }
 }

@@ -1,6 +1,8 @@
 package org.codingstyle.core.model;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,11 +16,15 @@ public class Indentation extends Entity {
     @OneToOne(optional = false)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
-    @Transient private IndentCharacter indentCharacter;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "indent_character")
+    private IndentCharacter indentCharacter;
+    @Column(name = "tab_size")
+    private Integer tabSize;
     @Column(name = "indent_size")
     private Integer indentSize;
-    @Transient private Integer continuationIndentSize;
-    @Transient private Integer tabSize;
+    @Column(name = "continuation_indent_size")
+    private Integer continuationIndentSize;
     @Transient private Integer labelIndentSize;
     @Transient private Boolean labelIndentAbsolute;
     @Transient private Boolean smartTabs;
