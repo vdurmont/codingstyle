@@ -1,15 +1,37 @@
 package org.codingstyle.core.model;
 
-public class Indentation {
-    private IndentCharacter indentCharacter;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+@javax.persistence.Entity
+@Table(name = "cs_indentation")
+public class Indentation extends Entity {
+    @NotNull
+    @OneToOne(optional = false)
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
+    @Transient private IndentCharacter indentCharacter;
+    @Column(name = "indent_size")
     private Integer indentSize;
-    private Integer continuationIndentSize;
-    private Integer tabSize;
-    private Integer labelIndentSize;
-    private Boolean labelIndentAbsolute;
-    private Boolean smartTabs;
-    private Boolean reindentComments;
-    private Boolean relativeIndents;
+    @Transient private Integer continuationIndentSize;
+    @Transient private Integer tabSize;
+    @Transient private Integer labelIndentSize;
+    @Transient private Boolean labelIndentAbsolute;
+    @Transient private Boolean smartTabs;
+    @Transient private Boolean reindentComments;
+    @Transient private Boolean relativeIndents;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     public IndentCharacter getIndentCharacter() {
         return indentCharacter;

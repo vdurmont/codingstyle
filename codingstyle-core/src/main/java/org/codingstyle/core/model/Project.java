@@ -3,6 +3,7 @@ package org.codingstyle.core.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -19,7 +20,8 @@ public class Project extends Entity {
     @NotEmpty
     @Column(name = "name", nullable = false, length = 128)
     private String name;
-    @Transient private Indentation indentation;
+    @OneToOne(mappedBy = "project")
+    private Indentation indentation;
     @Transient private Annotations annotations;
     @Transient private Page page;
     @Transient private Spaces spaces;
