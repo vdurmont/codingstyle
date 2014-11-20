@@ -3,6 +3,7 @@ package org.codingstyle.module.intellij.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Map;
 public abstract class OptionsHolder {
     @XmlElement(name = "option")
     private List<Option> options;
+    @XmlTransient
     private Map<String, Option> optionsByName;
 
     public List<Option> getOptions() {

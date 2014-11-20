@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class CodeScheme extends OptionsHolder {
     private String name;
     @XmlElement(name = "codeStyleSettings")
     private List<CodeStyleSetting> codeStyleSettings;
+    @XmlTransient
     private Map<String, CodeStyleSetting> codeStyleSettingsByName;
 
     public CodeScheme() {
