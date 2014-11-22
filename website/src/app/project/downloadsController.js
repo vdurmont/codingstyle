@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module("codingStyleApp").controller("DownloadsController",
-    function($scope) {
-        $scope.clicked = function() {
-            console.log("Clicked in downloads controller");
+    function($scope, RequestService) {
+        var downloadUrl = RequestService.API_URL + "projects/" + $scope.project.id + "/downloads/";
+
+        $scope.getDownloadUrl = function(type) {
+            return downloadUrl + type;
         };
     }
 );

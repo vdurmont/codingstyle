@@ -52,7 +52,7 @@ public class StyleManager {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> Module<T> getModule(Class<T> targetClass) {
+    protected <T> Module<T> getModule(Class<T> targetClass) {
         Module<T> module = (Module<T>) this.modules.get(targetClass);
         if (module == null) {
             throw new CodingStyleException("Unable to find module for class: " + targetClass);

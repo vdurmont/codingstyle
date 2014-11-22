@@ -9,6 +9,7 @@ angular.module("codingStyleApp").factory("RequestService",
         };
 
         return {
+            API_URL: apiUrl,
             get: function(url, params) {
                 var p = buildParams(params);
                 var deferred = $q.defer();
