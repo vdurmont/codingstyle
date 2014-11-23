@@ -8,9 +8,11 @@ import static org.codingstyle.module.checkstyle.processor.CheckstyleWriterUtil.a
 
 public class CheckstyleImportsWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Imports imports) {
-        CheckModule treeWalker = checkstyle.getOrCreateModule("TreeWalker");
-        addModuleIfTrue(treeWalker, "AvoidStarImport", imports.getAvoidStarImport());
-        addModuleIfTrue(treeWalker, "UnusedImports", imports.getAvoidUnusedImports());
-        addModuleIfTrue(treeWalker, "RedundantImport", imports.getAvoidRedundantImports());
+        if (imports != null) {
+            CheckModule treeWalker = checkstyle.getOrCreateModule("TreeWalker");
+            addModuleIfTrue(treeWalker, "AvoidStarImport", imports.getAvoidStarImport());
+            addModuleIfTrue(treeWalker, "UnusedImports", imports.getAvoidUnusedImports());
+            addModuleIfTrue(treeWalker, "RedundantImport", imports.getAvoidRedundantImports());
+        }
     }
 }

@@ -9,7 +9,9 @@ import static org.codingstyle.module.checkstyle.processor.CheckstyleWriterUtil.a
 
 public class CheckstyleAnnotationsWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Annotations annotations) {
-        CheckModule treewalker = checkstyle.getOrCreateModule("TreeWalker");
-        addModuleIfTrue(treewalker, "MissingOverride", annotations.getForceOverride());
+        if (annotations != null) {
+            CheckModule treewalker = checkstyle.getOrCreateModule("TreeWalker");
+            addModuleIfTrue(treewalker, "MissingOverride", annotations.getForceOverride());
+        }
     }
 }

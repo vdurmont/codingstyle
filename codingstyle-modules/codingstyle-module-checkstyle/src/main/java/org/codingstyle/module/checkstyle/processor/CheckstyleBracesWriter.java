@@ -10,16 +10,18 @@ import org.codingstyle.module.checkstyle.util.CheckModuleBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Map.Entry;
 import static org.codingstyle.core.model.Braces.ForcedBracesBlock;
 import static org.codingstyle.core.model.Braces.LeftBracesBlock;
 import static org.codingstyle.core.model.Braces.RightBracesBlock;
-import static java.util.Map.Entry;
 
 public class CheckstyleBracesWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Braces braces) {
-        addLeftCurlyStyle(checkstyle, braces);
-        addRightCurlyStyle(checkstyle, braces);
-        forceBraces(checkstyle, braces);
+        if (braces != null) {
+            addLeftCurlyStyle(checkstyle, braces);
+            addRightCurlyStyle(checkstyle, braces);
+            forceBraces(checkstyle, braces);
+        }
     }
 
     private static void addLeftCurlyStyle(Checkstyle checkstyle, Braces braces) {

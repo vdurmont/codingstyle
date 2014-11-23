@@ -8,8 +8,10 @@ import org.codingstyle.module.checkstyle.util.CheckModuleBuilder;
 
 public class CheckstyleIndentationWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Indentation indentation) {
-        checkIndentCharacter(checkstyle, indentation.getIndentCharacter());
-        checkIndentSize(checkstyle, indentation.getIndentSize(), indentation.getLabelIndentSize());
+        if (indentation != null) {
+            checkIndentCharacter(checkstyle, indentation.getIndentCharacter());
+            checkIndentSize(checkstyle, indentation.getIndentSize(), indentation.getLabelIndentSize());
+        }
     }
 
     private static void checkIndentCharacter(Checkstyle checkstyle, IndentCharacter character) {

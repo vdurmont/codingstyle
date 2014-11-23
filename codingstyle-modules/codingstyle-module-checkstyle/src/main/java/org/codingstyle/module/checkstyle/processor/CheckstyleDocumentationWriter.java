@@ -7,6 +7,8 @@ import static org.codingstyle.module.checkstyle.processor.CheckstyleWriterUtil.a
 
 public class CheckstyleDocumentationWriter {
     public static void buildCheckstyle(Checkstyle checkstyle, Documentation documentation) {
-        addModuleIfTrue(checkstyle, "JavadocPackage", documentation.getForcePackageJavadoc());
+        if (documentation != null) {
+            addModuleIfTrue(checkstyle, "JavadocPackage", documentation.getForcePackageJavadoc());
+        }
     }
 }

@@ -1,13 +1,6 @@
 package org.codingstyle.module.checkstyle;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleLauncher;
-import org.codingstyle.core.model.Annotations;
-import org.codingstyle.core.model.Braces;
-import org.codingstyle.core.model.Documentation;
-import org.codingstyle.core.model.Imports;
-import org.codingstyle.core.model.Indentation;
-import org.codingstyle.core.model.Page;
-import org.codingstyle.core.model.Spaces;
 import org.codingstyle.core.model.Project;
 import org.codingstyle.module.checkstyle.model.Checkstyle;
 import org.codingstyle.module.checkstyle.processor.CheckstyleConfigProcessor;
@@ -64,17 +57,9 @@ public class CheckStyleTestUtils {
         System.out.println(s);
     }
 
-    // TODO maybe the writers should handle null properties
     public static Project generateStyle() {
         Project project = new Project();
         project.setName("My project");
-        project.setIndentation(new Indentation());
-        project.setAnnotations(new Annotations());
-        project.setBraces(new Braces());
-        project.setDocumentation(new Documentation());
-        project.setPage(new Page());
-        project.setImports(new Imports());
-        project.setSpaces(new Spaces());
         return project;
     }
 }
